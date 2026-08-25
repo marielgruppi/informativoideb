@@ -96,6 +96,132 @@ def load_divulgacao(path, nivel):
     return df
 
 
+REGIOES = {"Norte", "Nordeste", "Sudeste", "Sul", "Centro-Oeste"}
+
+NOME_PARA_UF = {
+    "Rondônia": "RO", "Acre": "AC", "Amazonas": "AM", "Roraima": "RR", "Pará": "PA",
+    "Amapá": "AP", "Tocantins": "TO", "Maranhão": "MA", "Piauí": "PI", "Ceará": "CE",
+    "R. G. do Norte": "RN", "Paraíba": "PB", "Pernambuco": "PE", "Alagoas": "AL",
+    "Sergipe": "SE", "Bahia": "BA", "Minas Gerais": "MG", "Espírito Santo": "ES",
+    "Rio de Janeiro": "RJ", "São Paulo": "SP", "Paraná": "PR", "Santa Catarina": "SC",
+    "R. G. do Sul": "RS", "M. G. do Sul": "MS", "Mato Grosso": "MT", "Goiás": "GO",
+    "Distrito Federal": "DF",
+}
+
+
+def normaliza_rede(v):
+    if v is None:
+        return None
+    return re.sub(r"\s*\(\d+\)", "", str(v)).strip()
+
+
+def load_regiao_uf_com_codigos(path, sheet):
+    """Para arquivos com a linha de códigos VL_* (ex.: divulgacao_regioes_ufs_ideb_2025.xlsx)."""
+    wb = openpyxl.load_workbook(path, data_only=True, read_only=True)
+    ws = wb[sheet]
+    rows = list(ws.iter_rows(values_only=True))
+    codes = rows[9]
+    col = {c: i for i, c in enumerate(codes) if c}
+    idx_nome = 0
+    idx_rede = 1
+
+    anos = {}
+    for code, i in col.items():
+        m = re.match(r"VL_(OBSERVADO|NOTA_MEDIA|INDICADOR_REND|PROJECAO)_(\d+)", code)
+        if not m:
+            continue
+        kind, ano = m.groups()
+        ano = int(re.sub(r"\D", "", ano)[:4])
+        anos.setdefault(ano, {})[kind] = i
+
+    records = []
+    for row in rows[10:]:
+        nome = row[idx_nome]
+        if nome not in NOME_PARA_UF and nome not in REGIOES:
+            continue
+        base = {
+            "NOME": nome,
+            "UF": NOME_PARA_UF.get(nome),
+            "REGIAO": nome if nome in REGIOES else None,
+            "REDE": normaliza_rede(row[idx_rede]),
+        }
+        for ano, idxs in anos.items():
+            ideb = to_num(row[idxs["OBSERVADO"]]) if "OBSERVADO" in idxs else None
+            n = to_num(row[idxs["NOTA_MEDIA"]]) if "NOTA_MEDIA" in idxs else None
+            p = to_num(row[idxs["INDICADOR_REND"]]) if "INDICADOR_REND" in idxs else None
+            if ideb is None and n is None and p is None:
+                continue
+            rec = dict(base)
+            rec.update(ANO=ano, IDEB=ideb, N=n, P=p)
+            records.append(rec)
+    return pd.DataFrame.from_records(records)
+
+
+def load_regiao_uf_legado(path, sheet):
+    """Para arquivos antigos sem linha de códigos (ex.: divulgacao_regioes_ufs_ideb_2019.xlsx),
+    identificando as colunas pelo forward-fill do cabeçalho (linhas 6/7/8)."""
+    wb = openpyxl.load_workbook(path, data_only=True, read_only=True)
+    ws = wb[sheet]
+    rows = list(ws.iter_rows(values_only=True))
+    r6, r7, r8 = rows[6], rows[7], rows[8]
+    ncol = len(r6)
+
+    # forward-fill do rótulo do bloco (linha 6)
+    bloco = [None] * ncol
+    atual = None
+    for i in range(ncol):
+        if r6[i] is not None:
+            atual = r6[i]
+        bloco[i] = atual
+
+    idx_ideb, idx_n, idx_p = {}, {}, {}
+    for i in range(ncol):
+        b = bloco[i]
+        if not b:
+            continue
+        m = re.match(r"IDEB\n(\d+)", str(b))
+        if m and r6[i] is not None:  # só a própria coluna de início do bloco IDEB
+            idx_ideb[int(m.group(1))] = i
+            continue
+        m = re.match(r"Taxa de Aprovação - (\d+)", str(b))
+        if m and r8[i] == "Indicador de Rendimento (P)":
+            idx_p[int(m.group(1))] = i
+            continue
+        m = re.match(r"Nota SAEB - (\d+)", str(b))
+        if m and r7[i] == "Nota Média Padronizada (N)":
+            idx_n[int(m.group(1))] = i
+
+    anos = sorted(set(idx_ideb) | set(idx_n) | set(idx_p))
+    records = []
+    for row in rows[10:]:
+        nome = row[0]
+        if nome not in NOME_PARA_UF and nome not in REGIOES:
+            continue
+        base = {
+            "NOME": nome,
+            "UF": NOME_PARA_UF.get(nome),
+            "REGIAO": nome if nome in REGIOES else None,
+            "REDE": normaliza_rede(row[1]),
+        }
+        for ano in anos:
+            ideb = to_num(row[idx_ideb[ano]]) if ano in idx_ideb else None
+            n = to_num(row[idx_n[ano]]) if ano in idx_n else None
+            p = to_num(row[idx_p[ano]]) if ano in idx_p else None
+            if ideb is None and n is None and p is None:
+                continue
+            rec = dict(base)
+            rec.update(ANO=ano, IDEB=ideb, N=n, P=p)
+            records.append(rec)
+    return pd.DataFrame.from_records(records)
+
+
+SHEET_UF = {
+    "anos_iniciais": "UF e Regiões (AI)",
+    "anos_finais": "UF e Regiões (AF)",
+    "ensino_medio": "UF e Regiões (EM)",
+}
+
+
 def faixa_ideb(v):
     if v is None or pd.isna(v):
         return None
@@ -199,6 +325,51 @@ def main():
         .reset_index()
     )
     out["Contagem_Escolas_por_SRE"] = contagem
+
+    # ---- Nível UF/Região — Gráfico 1, série completa de EM, e ranking nacional ----
+    uf_frames = []
+    for etapa_key, etapa_nome in ETAPAS.items():
+        print(f"Lendo divulgacao_regioes_ufs_ideb_2025.xlsx [{SHEET_UF[etapa_key]}] ...")
+        df = load_regiao_uf_com_codigos("divulgacao_regioes_ufs_ideb_2025.xlsx", SHEET_UF[etapa_key])
+        df["ETAPA"] = etapa_nome
+        uf_frames.append(df)
+    serie_uf = pd.concat(uf_frames, ignore_index=True)
+
+    # Estende a série do Ensino Médio para 2005-2015 usando o arquivo legado de 2019
+    # (o Inep só calcula Ideb de Ensino Médio por município/escola a partir de 2017;
+    # em nível de UF/região a série antiga volta a 2005).
+    print("Lendo divulgacao_regioes_ufs_ideb_2019.xlsx [EM, anos 2005-2015] ...")
+    em_legado = load_regiao_uf_legado("divulgacao_regioes_ufs_ideb_2019.xlsx", "UF e Regiões (EM)")
+    em_legado = em_legado[em_legado["ANO"] <= 2015].copy()
+    em_legado["ETAPA"] = "Ensino Médio"
+    serie_uf = pd.concat([serie_uf, em_legado], ignore_index=True)
+    serie_uf = serie_uf.sort_values(["ETAPA", "REGIAO", "UF", "REDE", "ANO"])
+    out["Serie_UF_Regiao"] = serie_uf
+
+    # Série só de Minas Gerais em nível UF (substitui a aproximação por média de
+    # municípios como fonte confiável para citar "o Ideb de Minas Gerais foi X").
+    serie_mg_uf = serie_uf[serie_uf["UF"] == "MG"].copy()
+    out["Serie_MG_nivel_UF"] = serie_mg_uf
+
+    # Ranking nacional das 27 UFs, por etapa/rede/ano — posição de MG.
+    def ranking(df, rede, ano, etapa):
+        sub = df[(df["REDE"] == rede) & (df["ANO"] == ano) & (df["ETAPA"] == etapa) & df["UF"].notna()]
+        sub = sub.dropna(subset=["IDEB"]).sort_values("IDEB", ascending=False).reset_index(drop=True)
+        sub["POSICAO"] = sub.index + 1
+        return sub[["POSICAO", "UF", "IDEB"]]
+
+    ranking_rows = []
+    for etapa_nome in ETAPAS.values():
+        for ano in (2023, 2025):
+            rk = ranking(serie_uf, "Estadual", ano, etapa_nome)
+            rk["ETAPA"] = etapa_nome
+            rk["ANO"] = ano
+            ranking_rows.append(rk)
+    ranking_df = pd.concat(ranking_rows, ignore_index=True)[["ETAPA", "ANO", "POSICAO", "UF", "IDEB"]]
+    out["Ranking_Estadual_por_UF"] = ranking_df
+
+    mg_posicao = ranking_df[ranking_df["UF"] == "MG"].sort_values(["ETAPA", "ANO"])
+    out["Ranking_MG_resumo"] = mg_posicao
 
     print("Salvando analise/indicadores_ideb_mg.xlsx ...")
     import os
