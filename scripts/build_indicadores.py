@@ -215,6 +215,46 @@ def load_regiao_uf_legado(path, sheet):
     return pd.DataFrame.from_records(records)
 
 
+def load_brasil_com_codigos(path, sheet):
+    wb = openpyxl.load_workbook(path, data_only=True, read_only=True)
+    ws = wb[sheet]
+    rows = list(ws.iter_rows(values_only=True))
+    codes = rows[9]
+    col = {c: i for i, c in enumerate(codes) if c}
+    idx_rede = col["rede"]
+
+    anos = {}
+    for code, i in col.items():
+        m = re.match(r"VL_(OBSERVADO|NOTA_MEDIA|INDICADOR_REND|PROJECAO)_(\d+)", code)
+        if not m:
+            continue
+        kind, ano = m.groups()
+        ano = int(re.sub(r"\D", "", ano)[:4])
+        anos.setdefault(ano, {})[kind] = i
+
+    records = []
+    for row in rows[10:]:
+        if row[0] != "Brasil":
+            continue
+        base = {"NOME": "Brasil", "UF": None, "REGIAO": None, "REDE": normaliza_rede(row[idx_rede])}
+        for ano, idxs in anos.items():
+            ideb = to_num(row[idxs["OBSERVADO"]]) if "OBSERVADO" in idxs else None
+            n = to_num(row[idxs["NOTA_MEDIA"]]) if "NOTA_MEDIA" in idxs else None
+            p = to_num(row[idxs["INDICADOR_REND"]]) if "INDICADOR_REND" in idxs else None
+            if ideb is None and n is None and p is None:
+                continue
+            rec = dict(base)
+            rec.update(ANO=ano, IDEB=ideb, N=n, P=p)
+            records.append(rec)
+    return pd.DataFrame.from_records(records)
+
+
+SHEET_BRASIL = {
+    "anos_iniciais": "Brasil (Anos Iniciais)",
+    "anos_finais": "Brasil (Anos Finais)",
+    "ensino_medio": "Brasil (EM)",
+}
+
 SHEET_UF = {
     "anos_iniciais": "UF e Regiões (AI)",
     "anos_finais": "UF e Regiões (AF)",
@@ -343,6 +383,15 @@ def main():
     em_legado = em_legado[em_legado["ANO"] <= 2015].copy()
     em_legado["ETAPA"] = "Ensino Médio"
     serie_uf = pd.concat([serie_uf, em_legado], ignore_index=True)
+
+    brasil_frames = []
+    for etapa_key, etapa_nome in ETAPAS.items():
+        print(f"Lendo divulgacao_brasil_ideb_2025.xlsx [{SHEET_BRASIL[etapa_key]}] ...")
+        df = load_brasil_com_codigos("divulgacao_brasil_ideb_2025.xlsx", SHEET_BRASIL[etapa_key])
+        df["ETAPA"] = etapa_nome
+        brasil_frames.append(df)
+    serie_uf = pd.concat([serie_uf] + brasil_frames, ignore_index=True)
+
     serie_uf = serie_uf.sort_values(["ETAPA", "REGIAO", "UF", "REDE", "ANO"])
     out["Serie_UF_Regiao"] = serie_uf
 
