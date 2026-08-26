@@ -341,7 +341,7 @@ children.push(h2("Notas de rodapé e referências"));
 children.push(
   ...nota(
     "AJUSTE",
-    "Lista abaixo mantém a maioria das referências de 2020, acrescida da Nota Informativa do Ideb 2025 (Inep). Falta reconferir se os links do Inep ainda resolvem antes de publicar."
+    "Lista de notas de rodapé atualizada com os links das notas técnicas e informativas do Inep (2021 e 2025) e do Inse 2023, além da Nota Informativa do Ideb 2025. Como não temos acesso à internet por aqui para clicar e confirmar cada um, vale uma checagem rápida antes de publicar — mas todos foram copiados de fonte primária (os próprios arquivos do Inep ou indicados por vocês), não buscados de memória."
   )
 );
 
@@ -353,11 +353,11 @@ children.push(
 
 const footnotes = {
   1: { children: [new Paragraph({ children: [new TextRun({ text: "Fernandes, R. Índice de Desenvolvimento da Educação Básica (Ideb). Textos para discussão, n.26, Brasília: Inep, 2007.", size: 18 })] })] },
-  2: { children: [new Paragraph({ children: [new TextRun({ text: "Nota Técnica do Inep sobre a metodologia de cálculo do Ideb.", size: 18 })] })] },
-  3: { children: [new Paragraph({ children: [new TextRun({ text: "Compromisso Todos pela Educação, Decreto nº 6.094/2007; Nota Técnica do Inep sobre metas intermediárias.", size: 18 })] })] },
+  2: { children: [new Paragraph({ children: [new TextRun({ text: "Nota informativa do Ideb 2025, Inep: https://download.inep.gov.br/ideb/nota_informativa_ideb_2025.pdf. Sobre o impacto da pandemia no ciclo de 2021, ver também a nota informativa do Ideb 2021 (https://download.inep.gov.br/educacao_basica/portal_ideb/planilhas_para_download/2021/nota_informativa_ideb_2021.pdf) e o Relatório de Resultados do Saeb 2021 (https://download.inep.gov.br/educacao_basica/saeb/2021/resultados/relatorio_de_resultados_do_saeb_2021_volume_1.pdf).", size: 18 })] })] },
+  3: { children: [new Paragraph({ children: [new TextRun({ text: "Compromisso Todos pela Educação, Decreto nº 6.094/2007 (https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2007/decreto/d6094.htm); Nota Técnica do Inep sobre metas intermediárias do Ideb: https://download.inep.gov.br/educacao_basica/portal_ideb/o_que_sao_as_metas/Nota_Tecnica_n2_metas_intermediarias_IDEB.pdf.", size: 18 })] })] },
   4: { children: [new Paragraph({ children: [new TextRun({ text: "Ensino médio não é analisado na rede municipal por ter poucas escolas municipais ofertantes dessa etapa.", size: 18 })] })] },
   5: { children: [new Paragraph({ children: [new TextRun({ text: "Soares & Pereira Xavier, 2013; Figueiredo et al., 2018; Souza, Costa & Riani, 2019.", size: 18 })] })] },
-  6: { children: [new Paragraph({ children: [new TextRun({ text: "Indicador de Nível Socioeconômico das Escolas de Educação Básica (Inse), Inep, edição 2023 [reconferir link da nota técnica antes de publicar]. Correlações calculadas por SRE (rede estadual, N=47), coeficiente de Pearson.", size: 18 })] })] },
+  6: { children: [new Paragraph({ children: [new TextRun({ text: "Indicador de Nível Socioeconômico das Escolas de Educação Básica (Inse), Inep, edição 2023. Nota técnica disponível em: https://download.inep.gov.br/publicacoes/institucionais/estatisticas_e_indicadores/indicador_nivel_socioeconomico_saeb_2023_nota_tecnica.pdf. Correlações calculadas por SRE (rede estadual, N=47), coeficiente de Pearson.", size: 18 })] })] },
   7: { children: [new Paragraph({ children: [new TextRun({ text: "Figueiredo, D., Carmo, E., Maia, R. e Silva, L. Os cavalos também caem: tratado das inconsistências do Ideb. Ensaio: avaliação e políticas públicas em educação, v.26, n.100, 2018.", size: 18 })] })] },
 };
 
