@@ -117,6 +117,40 @@ def grafico_1():
 # ---------------------------------------------------------------------------
 # Gráficos 2, 3, 4 — evolução histórica por rede, MG (nível UF), 2005/2007–2025
 # ---------------------------------------------------------------------------
+def rotula_extremos(ax, sub, cores, prioridade):
+    """Rotula só o pico e o vale de cada série (nunca todo ponto), pulando
+    rótulos que ficariam colados em outro já colocado."""
+    x0, x1 = min(sub.ANO), max(sub.ANO)
+    y0, y1 = ax.get_ylim()
+    colocados = []  # (x_norm, y_norm)
+
+    def perto_demais(xn, yn):
+        return any(((xn - px) ** 2 + (yn - py) ** 2) ** 0.5 < 0.09 for px, py in colocados)
+
+    for rede in prioridade:
+        if rede not in cores:
+            continue
+        s = sub[sub.REDE == rede].sort_values("ANO")
+        if len(s) < 2 or s.IDEB.max() == s.IDEB.min():
+            continue
+        cor = cores[rede]
+        i_max = s.IDEB.idxmax()
+        i_min = s.IDEB.idxmin()
+        for i, tipo in ((i_max, "pico"), (i_min, "vale")):
+            ano, val = s.loc[i, "ANO"], s.loc[i, "IDEB"]
+            xn, yn = (ano - x0) / (x1 - x0 or 1), (val - y0) / (y1 - y0 or 1)
+            if perto_demais(xn, yn):
+                continue
+            colocados.append((xn, yn))
+            offset = 9 if tipo == "pico" else -11
+            va = "bottom" if tipo == "pico" else "top"
+            ax.annotate(
+                f"{val:.1f}", xy=(ano, val), xytext=(0, offset), textcoords="offset points",
+                ha="center", va=va, fontsize=7.5, color=cor, fontweight="bold",
+                bbox=dict(boxstyle="round,pad=0.15", facecolor="white", edgecolor="none", alpha=0.8),
+            )
+
+
 def grafico_evolucao(etapa, numero, titulo):
     fig, ax = plt.subplots(figsize=(8, 4.2))
     sub = serie_mg = serie_uf[(serie_uf.ETAPA == etapa) & (serie_uf.UF == "MG")]
@@ -137,7 +171,14 @@ def grafico_evolucao(etapa, numero, titulo):
     ax.set_ylabel("Ideb")
     ax.spines[["top", "right"]].set_visible(False)
     ax.legend(frameon=False, loc="upper left")
-    ax.xaxis.set_major_locator(mticker.MultipleLocator(2 if etapa != "Ensino Médio" else 2))
+    anos_com_dado = sorted(sub.ANO.unique())
+    ax.xaxis.set_major_locator(mticker.FixedLocator(anos_com_dado))
+    ax.set_xticklabels([str(int(a)) for a in anos_com_dado], rotation=45, ha="right")
+    ax.set_xlim(min(anos_com_dado) - 0.5, max(anos_com_dado) + 0.5)
+    ymin, ymax = ax.get_ylim()
+    pad = (ymax - ymin) * 0.12
+    ax.set_ylim(ymin - pad, ymax + pad)
+    rotula_extremos(ax, sub, cores, ["Estadual", "Pública", "Privada", "Municipal"])
     fig.suptitle(f"Gráfico {numero} — {titulo}", fontsize=11)
     if "Municipal" in sub.REDE.unique():
         fig.text(0.02, -0.04, "Linha tracejada (Municipal): aproximação pela média simples dos municípios de MG (o Inep não publica\nagregado estadual dessa rede nesta tabela).", fontsize=7.5, color=TEXT_MUTED)
@@ -199,7 +240,17 @@ def grafico_faixas(rede, etapa, numero, titulo, min_escolas=3):
     pct = tab.div(tab.sum(axis=1), axis=0) * 100
     pct = pct.sort_values(">= 6")
 
-    fig, ax = plt.subplots(figsize=(8, max(4, 0.22 * len(pct))))
+    # Reserva uma faixa de cabeçalho de altura FIXA (em polegadas) para título e
+    # legenda, independente da altura do gráfico de barras (que cresce com o
+    # número de SRE) — evita o espaço em branco que aparecia nos gráficos com
+    # muitas linhas.
+    altura_barras = max(3.2, 0.22 * len(pct))
+    header_in = 1.3
+    fig_h = altura_barras + header_in
+    fig, ax = plt.subplots(figsize=(8, fig_h))
+    bottom_in = 0.55
+    fig.subplots_adjust(top=altura_barras / fig_h, bottom=bottom_in / fig_h)
+
     left = pd.Series(0.0, index=pct.index)
     for faixa in FAIXA_ORDEM:
         ax.barh(pct.index, pct[faixa], left=left, color=FAIXA_CORES[faixa], label=faixa, height=0.7)
@@ -207,9 +258,12 @@ def grafico_faixas(rede, etapa, numero, titulo, min_escolas=3):
     ax.set_xlim(0, 100)
     ax.set_xlabel("% de escolas")
     ax.spines[["top", "right"]].set_visible(False)
-    ax.legend(title="Faixa de Ideb", frameon=False, ncol=4, loc="upper center", bbox_to_anchor=(0.5, 1 + 30 / (18 * len(pct) + 60)))
-    fig.suptitle(f"Gráfico {numero} — {titulo}", fontsize=10.5, y=1 + 55 / (18 * len(pct) + 60))
-    fig.text(0.02, -0.01 - 0/max(1,len(pct)), f"SRE com menos de {min_escolas} escolas nessa rede/etapa foram omitidas.", fontsize=7, color=TEXT_MUTED)
+    fig.suptitle(f"Gráfico {numero} — {titulo}", fontsize=10.5, y=1 - 0.28 / fig_h)
+    ax.legend(
+        title="Faixa de Ideb", frameon=False, ncol=4, loc="upper center",
+        bbox_to_anchor=(0.5, 1 - 0.55 / fig_h), bbox_transform=fig.transFigure,
+    )
+    fig.text(0.02, -0.35 / fig_h, f"SRE com menos de {min_escolas} escolas nessa rede/etapa foram omitidas.", fontsize=7, color=TEXT_MUTED)
     savefig(fig, f"grafico_{numero}")
 
 
