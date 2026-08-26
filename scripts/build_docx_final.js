@@ -264,7 +264,7 @@ children.push(
   ...nota(
     "OBSERVAÇÃO METODOLÓGICA",
     "Nos Gráficos 6 a 8, SRE com menos de 3 escolas naquela rede/etapa foram omitidas para evitar percentuais de \"tudo ou nada\" sem significado (afetou Campo Belo, Curvelo, Itajubá, Metropolitana A e Pirapora, só nos anos iniciais). É um corte mais simples do que o critério de participação usado pelo Inep para divulgar resultado por escola (10 alunos presentes e 80% de participação), que não pôde ser aplicado aqui porque os arquivos de divulgação não trazem o número de alunos avaliados — apenas o Ideb já calculado.",
-    "Ainda pendente: a SRE de Belo Horizonte aparece na base como \"Metropolitana\", separada de \"Metropolitana A/B/C\" — provavelmente uma pendência do cruzamento de município × SRE que vocês enviaram. Precisamos confirmar em qual das três sub-regionais Belo Horizonte deveria entrar antes de publicar esses gráficos."
+    "Belo Horizonte foi reclassificada de \"Metropolitana\" (rótulo genérico que vinha no cruzamento) para SRE Metropolitana C, conforme a SEE-MG — já corrigido na planilha-fonte e nos gráficos."
   )
 );
 children.push(...fonteNota(["Fonte: Inep/MEC (Gráficos 6, 7 e 8)."]));
@@ -296,11 +296,21 @@ children.push(
   ])
 );
 children.push(
-  ...nota(
-    "PENDENTE",
-    "Ainda não recebemos uma base de Inse (2023) para cruzar com os resultados por SRE/RGInt. Esta seção fica de fora até chegar esse dado — o parágrafo interpretativo (regiões de menor Inse com pior Ideb, como em 2020) e o recálculo do coeficiente de correlação dependem dele."
+  body(
+    "O cruzamento confirma o padrão: as SRE de Januária, Almenara, Araçuaí, Teófilo Otoni e Janaúba — que já apareciam entre as de pior desempenho na rede estadual — estão também entre as de menor Inse médio do estado (2023). Em contrapartida, regionais como Uberlândia, Monte Carmelo, Pouso Alegre e Coronel Fabriciano, com Inse mais alto, tendem a ter percentuais maiores de escolas com Ideb acima de 6."
   )
 );
+children.push(
+  bodyMixed([
+    new TextRun({
+      text: "O coeficiente de correlação linear entre o Inse médio das SRE e o percentual de escolas estaduais com Ideb acima de seis foi positivo e estatisticamente significativo nos anos iniciais (r = 0,43; p < 0,01) e nos anos finais (r = 0,41; p < 0,01) do ensino fundamental — quanto maior o nível socioeconômico dos alunos de uma SRE, maior a proporção de escolas com Ideb elevado. No ensino médio, essa correlação específica não foi significativa (r = 0,03; p = 0,82), provavelmente porque praticamente nenhuma escola estadual do estado atinge Ideb acima de 6 nessa etapa, independentemente do Inse. Já a correlação entre o Inse e o percentual de escolas com Ideb abaixo de quatro foi negativa e significativa nas três etapas (anos finais: r = -0,45, p < 0,01; ensino médio: r = -0,67, p < 0,001), confirmando que SRE com nível socioeconômico mais baixo concentram, proporcionalmente, mais escolas com desempenho crítico",
+      size: 21,
+    }),
+    new FootnoteReferenceRun(6),
+    new TextRun({ text: ".", size: 21 }),
+  ])
+);
+children.push(...fonteNota(["Fonte: Inep/MEC — Indicador de Nível Socioeconômico das Escolas de Educação Básica (Inse), edição 2023."]));
 
 children.push(h2("O que os dados do Ideb informam"));
 children.push(
@@ -319,7 +329,7 @@ children.push(
       text: "Cabe registrar, por fim, que o Ideb, como todo indicador sintético, tem limites. Ao combinar rendimento e desempenho em um único número, ele pode mascarar estratégias de melhoria que não se traduzem em aprendizagem efetiva — como o próprio recorte por rede sugere ter ocorrido na rede privada em 2025, onde a aprovação subiu mais que o aprendizado",
       size: 21,
     }),
-    new FootnoteReferenceRun(6),
+    new FootnoteReferenceRun(7),
     new TextRun({
       text: ". Isso não invalida seu uso como referência de acompanhamento, mas recomenda cautela na leitura de variações pontuais e reforça a importância de olhar os subíndices — e não apenas o resultado final — na análise de política educacional.",
       size: 21,
@@ -347,7 +357,8 @@ const footnotes = {
   3: { children: [new Paragraph({ children: [new TextRun({ text: "Compromisso Todos pela Educação, Decreto nº 6.094/2007; Nota Técnica do Inep sobre metas intermediárias.", size: 18 })] })] },
   4: { children: [new Paragraph({ children: [new TextRun({ text: "Ensino médio não é analisado na rede municipal por ter poucas escolas municipais ofertantes dessa etapa.", size: 18 })] })] },
   5: { children: [new Paragraph({ children: [new TextRun({ text: "Soares & Pereira Xavier, 2013; Figueiredo et al., 2018; Souza, Costa & Riani, 2019.", size: 18 })] })] },
-  6: { children: [new Paragraph({ children: [new TextRun({ text: "Figueiredo, D., Carmo, E., Maia, R. e Silva, L. Os cavalos também caem: tratado das inconsistências do Ideb. Ensaio: avaliação e políticas públicas em educação, v.26, n.100, 2018.", size: 18 })] })] },
+  6: { children: [new Paragraph({ children: [new TextRun({ text: "Indicador de Nível Socioeconômico das Escolas de Educação Básica (Inse), Inep, edição 2023 [reconferir link da nota técnica antes de publicar]. Correlações calculadas por SRE (rede estadual, N=47), coeficiente de Pearson.", size: 18 })] })] },
+  7: { children: [new Paragraph({ children: [new TextRun({ text: "Figueiredo, D., Carmo, E., Maia, R. e Silva, L. Os cavalos também caem: tratado das inconsistências do Ideb. Ensaio: avaliação e políticas públicas em educação, v.26, n.100, 2018.", size: 18 })] })] },
 };
 
 const doc = new Document({

@@ -285,6 +285,9 @@ def main():
     })[["CO_MUNICIPIO", "RGINT", "SRE"]]
     cross["CO_MUNICIPIO"] = cross["CO_MUNICIPIO"].astype(int)
     cross["SRE"] = cross["SRE"].str.replace("SRE ", "", regex=False).str.title()
+    # Nota: Belo Horizonte (3106200) veio no crosswalk original com o rótulo
+    # genérico "Metropolitana"; corrigido direto na planilha-fonte para
+    # "Metropolitana C", conforme SEE-MG (educacao.mg.gov.br).
 
     out = {}
 
@@ -419,6 +422,60 @@ def main():
 
     mg_posicao = ranking_df[ranking_df["UF"] == "MG"].sort_values(["ETAPA", "ANO"])
     out["Ranking_MG_resumo"] = mg_posicao
+
+    # ---- Inse 2023 × Ideb, por SRE e por RGInt ----
+    print("Lendo INSE_2023_municipios.xlsx ...")
+    inse = pd.read_excel("INSE_2023_municipios.xlsx", sheet_name="INSE_MUN_2023")
+    inse = inse[(inse.SG_UF == "MG") & (inse.TP_LOCALIZACAO == 0)].copy()
+    REDE_INSE = {2: "Estadual", 3: "Municipal", 6: "Pública"}
+    inse["REDE"] = inse.TP_TIPO_REDE.map(REDE_INSE)
+    inse = inse[inse.REDE.notna()][["CO_MUNICIPIO", "REDE", "MEDIA_INSE", "QTD_ALUNOS_INSE"]]
+    inse = inse.merge(cross, on="CO_MUNICIPIO", how="left")
+    out["Inse_2023_Municipios_MG"] = inse
+
+    def inse_ponderado(df, dimensao):
+        def wavg(g):
+            return pd.Series({
+                "MEDIA_INSE": (g.MEDIA_INSE * g.QTD_ALUNOS_INSE).sum() / g.QTD_ALUNOS_INSE.sum(),
+                "QTD_ALUNOS_INSE": g.QTD_ALUNOS_INSE.sum(),
+            })
+        return df.groupby(["REDE", dimensao]).apply(wavg, include_groups=False).reset_index()
+
+    inse_sre = inse_ponderado(inse, "SRE")
+    inse_rgint = inse_ponderado(inse, "RGINT")
+    out["Inse_2023_por_SRE"] = inse_sre
+    out["Inse_2023_por_RGInt"] = inse_rgint
+
+    # Cruza com % de escolas com Ideb >= 6 e < 4 por SRE (rede Estadual) e calcula
+    # a correlação linear simples, como no informativo de 2020.
+    corr_rows = []
+    inse_est_sre = inse_sre[inse_sre.REDE == "Estadual"].set_index("SRE")["MEDIA_INSE"]
+    for etapa in out["Faixas_Estadual_por_SRE"].ETAPA.unique():
+        fx = out["Faixas_Estadual_por_SRE"]
+        fx = fx[fx.ETAPA == etapa].pivot_table(index="SRE", columns="FAIXA", values="PCT_ESCOLAS", fill_value=0)
+        fx = fx.join(inse_est_sre, how="inner")
+        if ">= 6" in fx.columns and len(fx) > 2:
+            corr_alta = fx["MEDIA_INSE"].corr(fx[">= 6"])
+        else:
+            corr_alta = None
+        if "< 4" in fx.columns and len(fx) > 2:
+            corr_baixa = fx["MEDIA_INSE"].corr(fx["< 4"])
+        else:
+            corr_baixa = None
+        n = len(fx)
+        def pvalor(r):
+            if r is None or n <= 2 or pd.isna(r) or abs(r) >= 1:
+                return None
+            from scipy import stats
+            t = r * ((n - 2) ** 0.5) / ((1 - r ** 2) ** 0.5)
+            return float(2 * stats.t.sf(abs(t), n - 2))
+        corr_rows.append({
+            "ETAPA": etapa,
+            "CORR_INSE_x_PCT_IDEB_MAIOR_6": corr_alta, "P_VALOR_MAIOR_6": pvalor(corr_alta),
+            "CORR_INSE_x_PCT_IDEB_MENOR_4": corr_baixa, "P_VALOR_MENOR_4": pvalor(corr_baixa),
+            "N_SRE": n,
+        })
+    out["Correlacao_Inse_Ideb"] = pd.DataFrame(corr_rows)
 
     print("Salvando analise/indicadores_ideb_mg.xlsx ...")
     import os
