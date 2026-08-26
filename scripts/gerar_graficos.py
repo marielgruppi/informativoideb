@@ -95,7 +95,7 @@ def grafico_1():
         b2 = ax.bar([i for i in x], mg25, width=w, color=ORANGE, label="MG 2025")
         b3 = ax.bar([i + w for i in x], br25, width=w, color=AQUA, label="Brasil 2025")
         for bars in (b1, b2, b3):
-            ax.bar_label(bars, fmt="%.1f", fontsize=7, padding=1, color=TEXT_MUTED)
+            ax.bar_label(bars, fmt="%.1f", fontsize=9, padding=1, color=TEXT_MUTED)
         # Municipal é aproximação (média dos municípios), marcada com hachura.
         if "Municipal" in redes:
             i_mun = redes.index("Municipal")
@@ -110,7 +110,8 @@ def grafico_1():
     handles, labels = axes[0].get_legend_handles_labels()
     fig.legend(handles, labels, loc="upper center", ncol=3, frameon=False, bbox_to_anchor=(0.5, 1.06))
     fig.suptitle("Gráfico 1: Ideb por rede de ensino, Brasil 2025 e Minas Gerais, 2023-2025", y=1.14, fontsize=11)
-    fig.text(0.02, -0.11, "Barras hachuradas (rede Municipal): o Inep não publica agregado estadual dessa rede nesta tabela.\nO valor foi aproximado pela média simples dos municípios de MG.", fontsize=9, color=TEXT_MUTED)
+    fig.text(0.02, -0.05, "Nota: barras hachuradas (rede Municipal) indicam aproximação pela média simples dos municípios de MG; o Inep não publica agregado estadual dessa rede nesta tabela.", fontsize=9, color=TEXT_MUTED)
+    fig.text(0.02, -0.095, "Fonte: Inep/MEC, divulgação Ideb 2025 (por município e por UF).", fontsize=9, color=TEXT_MUTED)
     savefig(fig, "grafico_1")
 
 
@@ -118,32 +119,32 @@ def grafico_1():
 # Gráficos 2, 3, 4 — evolução histórica por rede, MG (nível UF), 2005/2007–2025
 # ---------------------------------------------------------------------------
 def rotula_extremos(ax, sub, cores, prioridade):
-    """Rotula só o pico e o vale de cada série (nunca todo ponto), pulando
+    """Rotula pico, vale, primeiro e último ano de cada série, pulando
     rótulos que ficariam colados em outro já colocado."""
     x0, x1 = min(sub.ANO), max(sub.ANO)
     y0, y1 = ax.get_ylim()
     colocados = []  # (x_norm, y_norm)
 
     def perto_demais(xn, yn):
-        return any(((xn - px) ** 2 + (yn - py) ** 2) ** 0.5 < 0.09 for px, py in colocados)
+        return any(((xn - px) ** 2 + (yn - py) ** 2) ** 0.5 < 0.065 for px, py in colocados)
 
     for rede in prioridade:
         if rede not in cores:
             continue
         s = sub[sub.REDE == rede].sort_values("ANO")
-        if len(s) < 2 or s.IDEB.max() == s.IDEB.min():
+        if len(s) < 2:
             continue
         cor = cores[rede]
-        i_max = s.IDEB.idxmax()
-        i_min = s.IDEB.idxmin()
-        for i, tipo in ((i_max, "pico"), (i_min, "vale")):
+        candidatos = [s.IDEB.idxmax(), s.IDEB.idxmin(), s.index[0], s.index[-1]]
+        for i in candidatos:
             ano, val = s.loc[i, "ANO"], s.loc[i, "IDEB"]
             xn, yn = (ano - x0) / (x1 - x0 or 1), (val - y0) / (y1 - y0 or 1)
             if perto_demais(xn, yn):
                 continue
             colocados.append((xn, yn))
-            offset = 9 if tipo == "pico" else -11
-            va = "bottom" if tipo == "pico" else "top"
+            acima = yn >= 0.5
+            offset = 9 if acima else -11
+            va = "bottom" if acima else "top"
             ax.annotate(
                 f"{val:.1f}", xy=(ano, val), xytext=(0, offset), textcoords="offset points",
                 ha="center", va=va, fontsize=7.5, color=cor, fontweight="bold",
@@ -202,8 +203,8 @@ def grafico_5():
         w = 0.33
         b1 = ax.bar([i - w / 2 for i in x], var_n, width=w, color=BLUE, label="Δ Desempenho (N)")
         b2 = ax.bar([i + w / 2 for i in x], var_p, width=w, color=ORANGE, label="Δ Rendimento (P×10)")
-        ax.bar_label(b1, fmt="%.2f", fontsize=7, padding=1, color=TEXT_MUTED)
-        ax.bar_label(b2, fmt="%.2f", fontsize=7, padding=1, color=TEXT_MUTED)
+        ax.bar_label(b1, fmt="%.2f", fontsize=9, padding=1, color=TEXT_MUTED)
+        ax.bar_label(b2, fmt="%.2f", fontsize=9, padding=1, color=TEXT_MUTED)
         if "Municipal" in redes:
             i_mun = redes.index("Municipal")
             b1.patches[i_mun].set_hatch("///")
