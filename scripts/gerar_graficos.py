@@ -96,7 +96,7 @@ def grafico_1():
         b3 = ax.bar([i + w for i in x], br25, width=w, color=AQUA, label="Brasil 2025")
         for bars in (b1, b2, b3):
             ax.bar_label(bars, fmt="%.1f", fontsize=7, padding=1, color=TEXT_MUTED)
-        # Municipal é aproximação (média dos municípios) — marca com hachura.
+        # Municipal é aproximação (média dos municípios), marcada com hachura.
         if "Municipal" in redes:
             i_mun = redes.index("Municipal")
             for bars in (b1, b2, b3):
@@ -109,8 +109,8 @@ def grafico_1():
     axes[0].set_ylabel("Ideb")
     handles, labels = axes[0].get_legend_handles_labels()
     fig.legend(handles, labels, loc="upper center", ncol=3, frameon=False, bbox_to_anchor=(0.5, 1.06))
-    fig.suptitle("Gráfico 1 — Ideb por rede de ensino, Brasil 2025 e Minas Gerais 2023–2025", y=1.14, fontsize=11)
-    fig.text(0.02, -0.04, "Barras hachuradas (rede Municipal): o Inep não publica agregado estadual dessa rede nesta tabela;\nvalor aproximado pela média simples dos municípios de MG.", fontsize=7.5, color=TEXT_MUTED)
+    fig.suptitle("Gráfico 1: Ideb por rede de ensino, Brasil 2025 e Minas Gerais, 2023-2025", y=1.14, fontsize=11)
+    fig.text(0.02, -0.11, "Barras hachuradas (rede Municipal): o Inep não publica agregado estadual dessa rede nesta tabela.\nO valor foi aproximado pela média simples dos municípios de MG.", fontsize=9, color=TEXT_MUTED)
     savefig(fig, "grafico_1")
 
 
@@ -165,8 +165,8 @@ def grafico_evolucao(etapa, numero, titulo):
     # marca 2021 (ciclo pós-pandemia)
     if 2021 in sub.ANO.values:
         ax.axvline(2021, color=GRID, linewidth=8, alpha=0.5, zorder=0)
-        ax.annotate("2021 — ciclo\npós-pandemia", xy=(2021, ax.get_ylim()[0]),
-                    xytext=(2021, ax.get_ylim()[0]), fontsize=7.5, color=TEXT_MUTED,
+        ax.annotate("2021\nciclo pós-pandemia", xy=(2021, ax.get_ylim()[0]),
+                    xytext=(2021, ax.get_ylim()[0]), fontsize=9, color=TEXT_MUTED,
                     ha="center", va="bottom")
     ax.set_ylabel("Ideb")
     ax.spines[["top", "right"]].set_visible(False)
@@ -179,9 +179,9 @@ def grafico_evolucao(etapa, numero, titulo):
     pad = (ymax - ymin) * 0.12
     ax.set_ylim(ymin - pad, ymax + pad)
     rotula_extremos(ax, sub, cores, ["Estadual", "Pública", "Privada", "Municipal"])
-    fig.suptitle(f"Gráfico {numero} — {titulo}", fontsize=11)
+    fig.suptitle(f"Gráfico {numero}: {titulo}", fontsize=11)
     if "Municipal" in sub.REDE.unique():
-        fig.text(0.02, -0.04, "Linha tracejada (Municipal): aproximação pela média simples dos municípios de MG (o Inep não publica\nagregado estadual dessa rede nesta tabela).", fontsize=7.5, color=TEXT_MUTED)
+        fig.text(0.02, -0.16, "Linha tracejada (Municipal): aproximação pela média simples dos municípios de MG.\nO Inep não publica agregado estadual dessa rede nesta tabela.", fontsize=9, color=TEXT_MUTED)
     savefig(fig, f"grafico_{numero}")
 
 
@@ -217,7 +217,7 @@ def grafico_5():
         ax.spines[["top", "right"]].set_visible(False)
     handles, labels = axes[0].get_legend_handles_labels()
     fig.legend(handles, labels, loc="upper center", ncol=2, frameon=False, bbox_to_anchor=(0.5, 1.08))
-    fig.suptitle("Gráfico 5 — Variação de desempenho (Saeb) e rendimento por rede — MG, 2023–2025", y=1.16, fontsize=11)
+    fig.suptitle("Gráfico 5: Variação de desempenho (Saeb) e rendimento por rede, MG, 2023-2025", y=1.16, fontsize=11)
     savefig(fig, "grafico_5")
 
 
@@ -246,9 +246,9 @@ def grafico_faixas(rede, etapa, numero, titulo, min_escolas=3):
     # muitas linhas.
     altura_barras = max(3.2, 0.22 * len(pct))
     header_in = 1.3
+    bottom_in = 0.7
     fig_h = altura_barras + header_in
     fig, ax = plt.subplots(figsize=(8, fig_h))
-    bottom_in = 0.55
     fig.subplots_adjust(top=altura_barras / fig_h, bottom=bottom_in / fig_h)
 
     left = pd.Series(0.0, index=pct.index)
@@ -258,24 +258,24 @@ def grafico_faixas(rede, etapa, numero, titulo, min_escolas=3):
     ax.set_xlim(0, 100)
     ax.set_xlabel("% de escolas")
     ax.spines[["top", "right"]].set_visible(False)
-    fig.suptitle(f"Gráfico {numero} — {titulo}", fontsize=10.5, y=1 - 0.28 / fig_h)
+    fig.suptitle(f"Gráfico {numero}: {titulo}", fontsize=10.5, y=1 - 0.28 / fig_h)
     ax.legend(
         title="Faixa de Ideb", frameon=False, ncol=4, loc="upper center",
         bbox_to_anchor=(0.5, 1 - 0.55 / fig_h), bbox_transform=fig.transFigure,
     )
-    fig.text(0.02, -0.35 / fig_h, f"SRE com menos de {min_escolas} escolas nessa rede/etapa foram omitidas.", fontsize=7, color=TEXT_MUTED)
+    fig.text(0.02, -0.5 / fig_h, f"SRE com menos de {min_escolas} escolas nessa rede/etapa foram omitidas.", fontsize=9, color=TEXT_MUTED)
     savefig(fig, f"grafico_{numero}")
 
 
 if __name__ == "__main__":
     grafico_1()
-    grafico_evolucao("Anos Iniciais do Ensino Fundamental", 2, "Evolução do Ideb, anos iniciais, por rede — MG, 2005–2025")
-    grafico_evolucao("Anos Finais do Ensino Fundamental", 3, "Evolução do Ideb, anos finais — MG, 2005–2025")
-    grafico_evolucao("Ensino Médio", 4, "Evolução do Ideb, ensino médio — MG, 2005–2025")
+    grafico_evolucao("Anos Iniciais do Ensino Fundamental", 2, "Evolução do Ideb, anos iniciais, por rede, MG, 2005-2025")
+    grafico_evolucao("Anos Finais do Ensino Fundamental", 3, "Evolução do Ideb, anos finais, por rede, MG, 2005-2025")
+    grafico_evolucao("Ensino Médio", 4, "Evolução do Ideb, ensino médio, por rede, MG, 2005-2025")
     grafico_5()
-    grafico_faixas("Estadual", "Anos Iniciais do Ensino Fundamental", 6, "% de escolas estaduais por faixa de Ideb, anos iniciais — MG, 2025")
-    grafico_faixas("Estadual", "Anos Finais do Ensino Fundamental", 7, "% de escolas estaduais por faixa de Ideb, anos finais — MG, 2025")
-    grafico_faixas("Estadual", "Ensino Médio", 8, "% de escolas estaduais por faixa de Ideb, ensino médio — MG, 2025")
-    grafico_faixas("Municipal", "Anos Iniciais do Ensino Fundamental", 9, "% de escolas municipais por faixa de Ideb, anos iniciais — MG, 2025")
-    grafico_faixas("Municipal", "Anos Finais do Ensino Fundamental", 10, "% de escolas municipais por faixa de Ideb, anos finais — MG, 2025")
+    grafico_faixas("Estadual", "Anos Iniciais do Ensino Fundamental", 6, "% de escolas estaduais por faixa de Ideb, anos iniciais, MG, 2025")
+    grafico_faixas("Estadual", "Anos Finais do Ensino Fundamental", 7, "% de escolas estaduais por faixa de Ideb, anos finais, MG, 2025")
+    grafico_faixas("Estadual", "Ensino Médio", 8, "% de escolas estaduais por faixa de Ideb, ensino médio, MG, 2025")
+    grafico_faixas("Municipal", "Anos Iniciais do Ensino Fundamental", 9, "% de escolas municipais por faixa de Ideb, anos iniciais, MG, 2025")
+    grafico_faixas("Municipal", "Anos Finais do Ensino Fundamental", 10, "% de escolas municipais por faixa de Ideb, anos finais, MG, 2025")
     print("OK")

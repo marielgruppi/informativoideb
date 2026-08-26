@@ -44,8 +44,8 @@ function fonteNota(lines) {
   return lines.map(
     (l, i) =>
       new Paragraph({
-        spacing: { after: i === lines.length - 1 ? 160 : 20 },
-        children: [new TextRun({ text: l, size: 17, italics: true, color: GRAY })],
+        spacing: { before: i === 0 ? 100 : 0, after: i === lines.length - 1 ? 160 : 20 },
+        children: [new TextRun({ text: l, size: 19, italics: true, color: GRAY })],
       })
   );
 }
