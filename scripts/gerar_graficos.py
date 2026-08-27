@@ -225,6 +225,62 @@ def grafico_5():
 # ---------------------------------------------------------------------------
 # Gráficos 6-8 (estadual) e 9-10 (municipal) — % de escolas por faixa de Ideb, por SRE
 # ---------------------------------------------------------------------------
+# ---------------------------------------------------------------------------
+# Gráfico 6 — Ideb da rede estadual por UF, três etapas, 2025
+# ---------------------------------------------------------------------------
+def grafico_ranking_uf(numero, ano=2025):
+    rk = pd.read_excel(xls, "Ranking_Estadual_por_UF")
+    rk = rk[rk.ANO == ano]
+    cores = {
+        "Anos Iniciais do Ensino Fundamental": BLUE,
+        "Anos Finais do Ensino Fundamental": AQUA,
+        "Ensino Médio": YELLOW,
+    }
+    piv = rk.pivot(index="UF", columns="ETAPA", values="IDEB")[list(cores)]
+    # Ordena pela média do Ideb nas etapas disponíveis (RR não tem valor de
+    # anos iniciais em 2025, por isso não dá pra ordenar por uma etapa só).
+    ordem = piv.mean(axis=1).sort_values().index.tolist()
+    piv = piv.loc[ordem]
+
+    altura_barras = max(3.2, 0.28 * len(ordem))
+    header_in = 1.3
+    bottom_in = 0.75
+    fig_h = altura_barras + header_in
+    fig, ax = plt.subplots(figsize=(8, fig_h))
+    fig.subplots_adjust(top=altura_barras / fig_h, bottom=bottom_in / fig_h)
+
+    y = list(range(len(ordem)))
+    h = 0.24
+    deslocs = {
+        "Anos Iniciais do Ensino Fundamental": h,
+        "Anos Finais do Ensino Fundamental": 0,
+        "Ensino Médio": -h,
+    }
+    for etapa, cor in cores.items():
+        barras = ax.barh([yy + deslocs[etapa] for yy in y], piv[etapa], height=h * 0.92, color=cor, label=ETAPA_ABREV[etapa])
+        # Rotula só a UF em destaque (MG), pra não poluir com 27 UF x 3 etapas.
+        rotulos = ["" if uf != "MG" else f"{v:.1f}" for uf, v in zip(ordem, piv[etapa])]
+        ax.bar_label(barras, labels=rotulos, fontsize=8.5, padding=2, color=TEXT_MUTED, fontweight="bold")
+
+    ax.set_yticks(y)
+    labels = ax.set_yticklabels(ordem)
+    if "MG" in ordem:
+        i_mg = ordem.index("MG")
+        labels[i_mg].set_fontweight("bold")
+        ax.axhspan(i_mg - 1.5 * h, i_mg + 1.5 * h, color=GRID, alpha=0.6, zorder=0)
+    ax.set_xlabel("Ideb")
+    ax.spines[["top", "right"]].set_visible(False)
+    fig.suptitle(f"Gráfico {numero}: Ideb da rede estadual por UF e etapa de ensino, {ano}", fontsize=10.5, y=1 - 0.28 / fig_h)
+    ax.legend(frameon=False, ncol=3, loc="upper center", bbox_to_anchor=(0.5, 1 - 0.55 / fig_h), bbox_transform=fig.transFigure)
+    fig.text(
+        0.02, -0.55 / fig_h,
+        "Nota: UF ordenadas pela média do Ideb nas três etapas; Minas Gerais em destaque.\n"
+        "Fonte: Inep/MEC, divulgação Ideb 2025 por UF (ranking calculado sobre as 27 unidades da federação).",
+        fontsize=9, color=TEXT_MUTED,
+    )
+    savefig(fig, f"grafico_{numero}")
+
+
 FAIXA_ORDEM = ["< 4", "4 a 4,9", "5 a 5,9", ">= 6"]
 FAIXA_CORES = {"< 4": "#e34948", "4 a 4,9": YELLOW, "5 a 5,9": "#8fd0ba", ">= 6": AQUA}
 
@@ -274,9 +330,10 @@ if __name__ == "__main__":
     grafico_evolucao("Anos Finais do Ensino Fundamental", 3, "Evolução do Ideb, anos finais, por rede, MG, 2005-2025")
     grafico_evolucao("Ensino Médio", 4, "Evolução do Ideb, ensino médio, por rede, MG, 2005-2025")
     grafico_5()
-    grafico_faixas("Estadual", "Anos Iniciais do Ensino Fundamental", 6, "Percentual de escolas estaduais por faixa de Ideb, anos iniciais, MG, 2025")
-    grafico_faixas("Estadual", "Anos Finais do Ensino Fundamental", 7, "Percentual de escolas estaduais por faixa de Ideb, anos finais, MG, 2025")
-    grafico_faixas("Estadual", "Ensino Médio", 8, "Percentual de escolas estaduais por faixa de Ideb, ensino médio, MG, 2025")
-    grafico_faixas("Municipal", "Anos Iniciais do Ensino Fundamental", 9, "Percentual de escolas municipais por faixa de Ideb, anos iniciais, MG, 2025")
-    grafico_faixas("Municipal", "Anos Finais do Ensino Fundamental", 10, "Percentual de escolas municipais por faixa de Ideb, anos finais, MG, 2025")
+    grafico_ranking_uf(6)
+    grafico_faixas("Estadual", "Anos Iniciais do Ensino Fundamental", 7, "Percentual de escolas estaduais por faixa de Ideb, anos iniciais, MG, 2025")
+    grafico_faixas("Estadual", "Anos Finais do Ensino Fundamental", 8, "Percentual de escolas estaduais por faixa de Ideb, anos finais, MG, 2025")
+    grafico_faixas("Estadual", "Ensino Médio", 9, "Percentual de escolas estaduais por faixa de Ideb, ensino médio, MG, 2025")
+    grafico_faixas("Municipal", "Anos Iniciais do Ensino Fundamental", 10, "Percentual de escolas municipais por faixa de Ideb, anos iniciais, MG, 2025")
+    grafico_faixas("Municipal", "Anos Finais do Ensino Fundamental", 11, "Percentual de escolas municipais por faixa de Ideb, anos finais, MG, 2025")
     print("OK")

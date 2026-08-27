@@ -240,11 +240,13 @@ children.push(
   )
 );
 children.push(...fonteNota(["Fonte: Inep/MEC, divulgação Ideb 2025 por UF (ranking calculado sobre as 27 unidades da federação)."]));
+children.push(imagem(`${G}/grafico_6.png`, 8600));
+children.push(...fonteNota(["Fonte: Inep/MEC (Gráfico 6)."]));
 
 children.push(h2("Recorte regional: rede estadual"));
-children.push(imagem(`${G}/grafico_6.png`, 8600));
 children.push(imagem(`${G}/grafico_7.png`, 8600));
 children.push(imagem(`${G}/grafico_8.png`, 8600));
+children.push(imagem(`${G}/grafico_9.png`, 8600));
 children.push(
   body(
     "Nos anos iniciais, o quadro regional é bastante positivo. Em 34 das SRE analisadas, mais de 90% das escolas estaduais têm Ideb igual ou acima de 6, e em 12 delas todas as escolas atingem essa faixa. As SRE de Januária, Almenara e Carangola apresentam os menores percentuais nessa faixa, entre 48% e 50%, ainda assim a maioria das escolas."
@@ -263,11 +265,11 @@ children.push(
 children.push(
   ...nota(
     "OBSERVAÇÃO METODOLÓGICA",
-    "Nos Gráficos 6 a 8, SRE com menos de 3 escolas naquela rede/etapa foram omitidas para evitar percentuais de \"tudo ou nada\" sem significado (afetou Campo Belo, Curvelo, Itajubá, Metropolitana A e Pirapora, só nos anos iniciais). É um corte mais simples do que o critério de participação usado pelo Inep para divulgar resultado por escola (10 alunos presentes e 80% de participação), que não pôde ser aplicado aqui porque os arquivos de divulgação não trazem o número de alunos avaliados, apenas o Ideb já calculado.",
+    "Nos Gráficos 7 a 9, SRE com menos de 3 escolas naquela rede/etapa foram omitidas para evitar percentuais de \"tudo ou nada\" sem significado (afetou Campo Belo, Curvelo, Itajubá, Metropolitana A e Pirapora, só nos anos iniciais). É um corte mais simples do que o critério de participação usado pelo Inep para divulgar resultado por escola (10 alunos presentes e 80% de participação), que não pôde ser aplicado aqui porque os arquivos de divulgação não trazem o número de alunos avaliados, apenas o Ideb já calculado.",
     "Belo Horizonte foi reclassificada de \"Metropolitana\", rótulo genérico que vinha no cruzamento, para SRE Metropolitana C, conforme a SEE-MG. Correção já aplicada na planilha-fonte e nos gráficos."
   )
 );
-children.push(...fonteNota(["Fonte: Inep/MEC (Gráficos 6, 7 e 8)."]));
+children.push(...fonteNota(["Fonte: Inep/MEC (Gráficos 7, 8 e 9)."]));
 
 children.push(h2("Recorte regional: rede municipal"));
 children.push(
@@ -280,9 +282,9 @@ children.push(
     new TextRun({ text: ".", size: 21 }),
   ])
 );
-children.push(imagem(`${G}/grafico_9.png`, 8600));
 children.push(imagem(`${G}/grafico_10.png`, 8600));
-children.push(...fonteNota(["Fonte: Inep/MEC (Gráficos 9 e 10)."]));
+children.push(imagem(`${G}/grafico_11.png`, 8600));
+children.push(...fonteNota(["Fonte: Inep/MEC (Gráficos 10 e 11)."]));
 
 children.push(h2("Nível socioeconômico (Inse)"));
 children.push(
