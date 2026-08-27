@@ -6,6 +6,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
+import numpy as np
 import pandas as pd
 
 # Paleta categórica validada (skill dataviz) — ordem fixa por série.
@@ -327,6 +328,98 @@ def grafico_faixas(rede, etapa, numero, titulo, min_escolas=3):
     savefig(fig, f"grafico_{numero}")
 
 
+# ---------------------------------------------------------------------------
+# Gráfico 12 — Inse (SRE) x percentual de escolas por faixa de Ideb, rede estadual
+# ---------------------------------------------------------------------------
+def grafico_inse(numero):
+    inse = pd.read_excel(xls, "Inse_2023_por_SRE")
+    inse = inse[inse.REDE == "Estadual"][["SRE", "MEDIA_INSE"]]
+    corr = pd.read_excel(xls, "Correlacao_Inse_Ideb")
+
+    sub = escolas[(escolas.REDE == "Estadual") & escolas.FAIXA.notna()]
+    pct = (
+        sub.groupby(["ETAPA", "SRE"])["FAIXA"]
+        .value_counts(normalize=True)
+        .mul(100)
+        .rename("PCT")
+        .reset_index()
+    )
+
+    def serie(etapa, faixa):
+        d = pct[(pct.ETAPA == etapa) & (pct.FAIXA == faixa)][["SRE", "PCT"]]
+        return inse.merge(d, on="SRE", how="inner")
+
+    paineis = [
+        (">= 6", "Percentual de escolas com Ideb >= 6", "CORR_INSE_x_PCT_IDEB_MAIOR_6", "P_VALOR_MAIOR_6",
+         [("Anos Iniciais do Ensino Fundamental", BLUE), ("Anos Finais do Ensino Fundamental", AQUA)]),
+        ("< 4", "Percentual de escolas com Ideb < 4", "CORR_INSE_x_PCT_IDEB_MENOR_4", "P_VALOR_MENOR_4",
+         [("Anos Finais do Ensino Fundamental", AQUA), ("Ensino Médio", YELLOW)]),
+    ]
+    fig, axes = plt.subplots(1, 2, figsize=(11, 4.6))
+    for ax, (faixa, ylabel, col_r, col_p, series) in zip(axes, paineis):
+        for i, (etapa, cor) in enumerate(series):
+            d = serie(etapa, faixa)
+            ax.scatter(d.MEDIA_INSE, d.PCT, s=24, color=cor, alpha=0.8, label=ETAPA_ABREV[etapa])
+            if len(d) >= 2:
+                b, a = np.polyfit(d.MEDIA_INSE, d.PCT, 1)
+                xs = np.linspace(d.MEDIA_INSE.min(), d.MEDIA_INSE.max(), 50)
+                ax.plot(xs, a + b * xs, color=cor, linewidth=1.5, linestyle="--")
+            r = float(corr.loc[corr.ETAPA == etapa, col_r].iloc[0])
+            p = float(corr.loc[corr.ETAPA == etapa, col_p].iloc[0])
+            p_txt = "p < 0,01" if p < 0.01 else f"p = {p:.2f}".replace(".", ",")
+            ax.text(
+                0.03, 0.96 - i * 0.08, f"{ETAPA_ABREV[etapa]}: r = {r:.2f} ({p_txt})".replace(".", ","),
+                transform=ax.transAxes, fontsize=8.5, color=cor, va="top", fontweight="bold",
+            )
+        ax.set_xlabel("Inse médio da SRE (rede estadual)")
+        ax.set_ylabel(ylabel)
+        ax.spines[["top", "right"]].set_visible(False)
+
+    fig.suptitle(
+        f"Gráfico {numero}: Inse médio da SRE e percentual de escolas estaduais por faixa de Ideb, MG, 2023-2025",
+        fontsize=10.5, y=1.06,
+    )
+    fig.text(
+        0.02, -0.14,
+        "Nota: cada ponto é uma SRE (rede estadual, N=47); linha tracejada é a reta de regressão linear.\n"
+        "Fonte: Inep/MEC (Ideb 2025) e Inep, Indicador de Nível Socioeconômico das Escolas de Educação Básica (Inse), edição 2023.",
+        fontsize=9, color=TEXT_MUTED,
+    )
+    savefig(fig, f"grafico_{numero}")
+
+
+# ---------------------------------------------------------------------------
+# Gráfico 13 — Mediana do Ideb das escolas estaduais, ensino médio, por RGInt
+# ---------------------------------------------------------------------------
+def grafico_mediana_rgint(numero):
+    sub = escolas[(escolas.REDE == "Estadual") & (escolas.ETAPA == "Ensino Médio") & escolas.IDEB.notna()]
+    med = sub.groupby("RGINT")["IDEB"].median().sort_values()
+
+    mg_ideb = serie_uf.loc[
+        (serie_uf.ETAPA == "Ensino Médio") & (serie_uf.UF == "MG") & (serie_uf.REDE == "Estadual") & (serie_uf.ANO == 2025),
+        "IDEB",
+    ].iloc[0]
+
+    fig, ax = plt.subplots(figsize=(8, 0.4 * len(med) + 1.8))
+    ax.barh(med.index, med.values, color=BLUE, height=0.65)
+    ax.bar_label(ax.containers[0], fmt="%.1f", fontsize=9, padding=3, color=TEXT_MUTED)
+    ax.axvline(mg_ideb, color=TEXT_MUTED, linewidth=1.2, linestyle="--", zorder=0)
+    ax.text(mg_ideb, len(med) - 0.4, f" MG: {mg_ideb:.1f}", color=TEXT_MUTED, fontsize=9, va="center")
+    ax.set_xlabel("Ideb (mediana das escolas)")
+    ax.spines[["top", "right"]].set_visible(False)
+    fig.suptitle(
+        f"Gráfico {numero}: Mediana do Ideb das escolas estaduais, ensino médio, por RGInt, MG, 2025",
+        fontsize=10.5, y=1.03,
+    )
+    fig.text(
+        0.02, -0.11,
+        f"Nota: linha tracejada é o Ideb da rede estadual de MG no ensino médio ({mg_ideb:.1f}).\n"
+        "Fonte: Inep/MEC, divulgação Ideb 2025 por escola.",
+        fontsize=9, color=TEXT_MUTED,
+    )
+    savefig(fig, f"grafico_{numero}")
+
+
 if __name__ == "__main__":
     grafico_1()
     grafico_evolucao("Anos Iniciais do Ensino Fundamental", 2, "Evolução do Ideb, anos iniciais, por rede, MG, 2005-2025")
@@ -339,4 +432,6 @@ if __name__ == "__main__":
     grafico_faixas("Estadual", "Ensino Médio", 9, "Percentual de escolas estaduais por faixa de Ideb, ensino médio, MG, 2025")
     grafico_faixas("Municipal", "Anos Iniciais do Ensino Fundamental", 10, "Percentual de escolas municipais por faixa de Ideb, anos iniciais, MG, 2025")
     grafico_faixas("Municipal", "Anos Finais do Ensino Fundamental", 11, "Percentual de escolas municipais por faixa de Ideb, anos finais, MG, 2025")
+    grafico_inse(12)
+    grafico_mediana_rgint(13)
     print("OK")

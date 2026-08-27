@@ -312,6 +312,7 @@ children.push(
     new TextRun({ text: ".", size: 21 }),
   ])
 );
+children.push(imagem(`${G}/grafico_12.png`, 8600));
 children.push(...fonteNota(["Fonte: Inep/MEC, Indicador de Nível Socioeconômico das Escolas de Educação Básica (Inse), edição 2023."]));
 
 children.push(h2("O que os dados do Ideb informam"));
@@ -325,6 +326,8 @@ children.push(
     "Ainda assim, o desafio de sustentar a qualidade ao longo da trajetória escolar permanece. O Ideb cai a cada etapa, e o recorte por SRE mostra desigualdades regionais persistentes, mais amplas justamente nas etapas mais avançadas. No ensino médio, praticamente nenhuma escola estadual do estado atinge a marca de 6, e regionais como Januária e Teófilo Otoni concentram os piores resultados em quase todas as etapas e redes analisadas."
   )
 );
+children.push(imagem(`${G}/grafico_13.png`, 8600));
+children.push(...fonteNota(["Fonte: Inep/MEC, divulgação Ideb 2025 por escola."]));
 children.push(
   bodyMixed([
     new TextRun({
