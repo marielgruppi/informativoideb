@@ -257,7 +257,7 @@ def grafico_faixas(rede, etapa, numero, titulo, min_escolas=3):
         ax.barh(pct.index, pct[faixa], left=left, color=FAIXA_CORES[faixa], label=faixa, height=0.7)
         left += pct[faixa]
     ax.set_xlim(0, 100)
-    ax.set_xlabel("% de escolas")
+    ax.set_xlabel("Percentual de escolas")
     ax.spines[["top", "right"]].set_visible(False)
     fig.suptitle(f"Gráfico {numero}: {titulo}", fontsize=10.5, y=1 - 0.28 / fig_h)
     ax.legend(
@@ -274,9 +274,9 @@ if __name__ == "__main__":
     grafico_evolucao("Anos Finais do Ensino Fundamental", 3, "Evolução do Ideb, anos finais, por rede, MG, 2005-2025")
     grafico_evolucao("Ensino Médio", 4, "Evolução do Ideb, ensino médio, por rede, MG, 2005-2025")
     grafico_5()
-    grafico_faixas("Estadual", "Anos Iniciais do Ensino Fundamental", 6, "% de escolas estaduais por faixa de Ideb, anos iniciais, MG, 2025")
-    grafico_faixas("Estadual", "Anos Finais do Ensino Fundamental", 7, "% de escolas estaduais por faixa de Ideb, anos finais, MG, 2025")
-    grafico_faixas("Estadual", "Ensino Médio", 8, "% de escolas estaduais por faixa de Ideb, ensino médio, MG, 2025")
-    grafico_faixas("Municipal", "Anos Iniciais do Ensino Fundamental", 9, "% de escolas municipais por faixa de Ideb, anos iniciais, MG, 2025")
-    grafico_faixas("Municipal", "Anos Finais do Ensino Fundamental", 10, "% de escolas municipais por faixa de Ideb, anos finais, MG, 2025")
+    grafico_faixas("Estadual", "Anos Iniciais do Ensino Fundamental", 6, "Percentual de escolas estaduais por faixa de Ideb, anos iniciais, MG, 2025")
+    grafico_faixas("Estadual", "Anos Finais do Ensino Fundamental", 7, "Percentual de escolas estaduais por faixa de Ideb, anos finais, MG, 2025")
+    grafico_faixas("Estadual", "Ensino Médio", 8, "Percentual de escolas estaduais por faixa de Ideb, ensino médio, MG, 2025")
+    grafico_faixas("Municipal", "Anos Iniciais do Ensino Fundamental", 9, "Percentual de escolas municipais por faixa de Ideb, anos iniciais, MG, 2025")
+    grafico_faixas("Municipal", "Anos Finais do Ensino Fundamental", 10, "Percentual de escolas municipais por faixa de Ideb, anos finais, MG, 2025")
     print("OK")
