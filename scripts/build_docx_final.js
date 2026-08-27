@@ -217,13 +217,13 @@ children.push(...fonteNota(["Fonte: Inep/MEC (ambos os gráficos)."]));
 children.push(h2("Subíndices: rendimento × desempenho"));
 children.push(
   body(
-    "Como o Ideb sintetiza os resultados de rendimento e desempenho, é importante entender o comportamento dos seus subíndices. O Gráfico 5 mostra a variação do desempenho (nota média padronizada obtida pelo Saeb, de 0 a 10) e do rendimento (indicador de aprovação, de 0 a 1, aqui multiplicado por dez para ficar na mesma escala) entre 2023 e 2025."
+    "Como o Ideb sintetiza os resultados de rendimento e desempenho, é importante entender o comportamento dos seus subíndices. O Gráfico 5 mostra a variação percentual do desempenho (nota média padronizada obtida pelo Saeb) e do rendimento (indicador de aprovação) entre 2023 e 2025, em cada rede de ensino."
   )
 );
 children.push(imagem(`${G}/grafico_5.png`));
 children.push(
   body(
-    "Nas redes pública e estadual, os dois subíndices subiram juntos nas três etapas, o que sinaliza uma melhora genuína, em que o avanço na aprovação veio acompanhado de aprendizagem maior, e não de uma aprovação mais frouxa. O padrão mais chamativo é o da rede privada, cujo rendimento subiu com força nas três etapas, o equivalente a 0,02 a 0,12 ponto de aprovação a mais, mas cujo desempenho no Saeb caiu nos anos iniciais e no ensino médio. Ou seja, a rede privada aprovou mais alunos sem que isso viesse acompanhado, em média, de mais aprendizagem, movimento inverso ao observado nas redes públicas."
+    "Nas redes pública e estadual, os dois subíndices subiram juntos nas três etapas, o que sinaliza uma melhora genuína, em que o avanço na aprovação veio acompanhado de aprendizagem maior, e não de uma aprovação mais frouxa. O padrão mais chamativo é o da rede privada, cujo rendimento ficou estável nos anos iniciais e subiu nos anos finais e no ensino médio, entre 0,3% e 14,0%, mas cujo desempenho no Saeb caiu nas três etapas. Ou seja, a rede privada aprovou mais alunos sem que isso viesse acompanhado, em média, de mais aprendizagem, movimento inverso ao observado nas redes públicas."
   )
 );
 children.push(...fonteNota(["Fonte: Inep/MEC."]));

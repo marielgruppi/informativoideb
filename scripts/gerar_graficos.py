@@ -80,7 +80,7 @@ def savefig(fig, name):
 # Gráfico 1 — Ideb por rede de ensino, Brasil 2025 e Minas Gerais 2023–2025
 # ---------------------------------------------------------------------------
 def grafico_1():
-    fig, axes = plt.subplots(1, 3, figsize=(12, 4), sharey=True)
+    fig, axes = plt.subplots(1, 3, figsize=(15, 4.3), sharey=True)
     for ax, etapa in zip(axes, ETAPAS):
         sub = serie_uf[(serie_uf.ETAPA == etapa) & (serie_uf.ANO.isin([2023, 2025]))]
         mg = sub[sub.UF == "MG"].set_index(["REDE", "ANO"])["IDEB"]
@@ -171,7 +171,6 @@ def grafico_evolucao(etapa, numero, titulo):
                     ha="center", va="bottom")
     ax.set_ylabel("Ideb")
     ax.spines[["top", "right"]].set_visible(False)
-    ax.legend(frameon=False, loc="upper left")
     anos_com_dado = sorted(sub.ANO.unique())
     ax.xaxis.set_major_locator(mticker.FixedLocator(anos_com_dado))
     ax.set_xticklabels([str(int(a)) for a in anos_com_dado], rotation=45, ha="right")
@@ -181,8 +180,11 @@ def grafico_evolucao(etapa, numero, titulo):
     ax.set_ylim(ymin - pad, ymax + pad)
     rotula_extremos(ax, sub, cores, ["Estadual", "Pública", "Privada", "Municipal"])
     fig.suptitle(f"Gráfico {numero}: {titulo}", fontsize=11)
+    # Legenda embaixo (fora da área de plotagem), pra nunca sobrepor o
+    # primeiro ponto de nenhuma série.
+    ax.legend(frameon=False, loc="upper center", bbox_to_anchor=(0.5, -0.30), ncol=4)
     if "Municipal" in sub.REDE.unique():
-        fig.text(0.02, -0.16, "Linha tracejada (Municipal): aproximação pela média simples dos municípios de MG.\nO Inep não publica agregado estadual dessa rede nesta tabela.", fontsize=9, color=TEXT_MUTED)
+        fig.text(0.02, -0.40, "Linha tracejada (Municipal): aproximação pela média simples dos municípios de MG.\nO Inep não publica agregado estadual dessa rede nesta tabela.", fontsize=9, color=TEXT_MUTED)
     savefig(fig, f"grafico_{numero}")
 
 
@@ -197,14 +199,14 @@ def grafico_5():
         var_n, var_p = [], []
         for r in redes:
             s = sub[sub.REDE == r].set_index("ANO")
-            var_n.append(s.loc[2025, "N"] - s.loc[2023, "N"])
-            var_p.append((s.loc[2025, "P"] - s.loc[2023, "P"]) * 10)  # P vai de 0-1; escala x10 p/ comparar com N (0-10)
+            var_n.append((s.loc[2025, "N"] - s.loc[2023, "N"]) / s.loc[2023, "N"] * 100)
+            var_p.append((s.loc[2025, "P"] - s.loc[2023, "P"]) / s.loc[2023, "P"] * 100)
         x = range(len(redes))
         w = 0.33
-        b1 = ax.bar([i - w / 2 for i in x], var_n, width=w, color=BLUE, label="Δ Desempenho (N)")
-        b2 = ax.bar([i + w / 2 for i in x], var_p, width=w, color=ORANGE, label="Δ Rendimento (P×10)")
-        ax.bar_label(b1, fmt="%.2f", fontsize=9, padding=1, color=TEXT_MUTED)
-        ax.bar_label(b2, fmt="%.2f", fontsize=9, padding=1, color=TEXT_MUTED)
+        b1 = ax.bar([i - w / 2 for i in x], var_n, width=w, color=BLUE, label="Δ% Desempenho (N)")
+        b2 = ax.bar([i + w / 2 for i in x], var_p, width=w, color=ORANGE, label="Δ% Rendimento (P)")
+        ax.bar_label(b1, fmt="%.1f%%", fontsize=9, padding=1, color=TEXT_MUTED)
+        ax.bar_label(b2, fmt="%.1f%%", fontsize=9, padding=1, color=TEXT_MUTED)
         if "Municipal" in redes:
             i_mun = redes.index("Municipal")
             b1.patches[i_mun].set_hatch("///")
@@ -216,9 +218,10 @@ def grafico_5():
         ax.set_xticklabels(redes, fontsize=9)
         ax.set_title(ETAPA_ABREV[etapa], fontsize=10, loc="left")
         ax.spines[["top", "right"]].set_visible(False)
+    axes[0].set_ylabel("Variação percentual (%)")
     handles, labels = axes[0].get_legend_handles_labels()
     fig.legend(handles, labels, loc="upper center", ncol=2, frameon=False, bbox_to_anchor=(0.5, 1.08))
-    fig.suptitle("Gráfico 5: Variação de desempenho (Saeb) e rendimento por rede, MG, 2023-2025", y=1.16, fontsize=11)
+    fig.suptitle("Gráfico 5: Variação percentual de desempenho (Saeb) e rendimento por rede, MG, 2023-2025", y=1.16, fontsize=11)
     savefig(fig, "grafico_5")
 
 

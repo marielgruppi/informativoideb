@@ -120,18 +120,38 @@ def load_regiao_uf_com_codigos(path, sheet):
     wb = openpyxl.load_workbook(path, data_only=True, read_only=True)
     ws = wb[sheet]
     rows = list(ws.iter_rows(values_only=True))
+    r6 = rows[6]
     codes = rows[9]
-    col = {c: i for i, c in enumerate(codes) if c}
     idx_nome = 0
     idx_rede = 1
 
+    # Rótulo do bloco vigente (linha 6, forward-fill) — usado só para
+    # desambiguar colunas VL_INDICADOR_REND_<ano> duplicadas (ver nota abaixo).
+    bloco = [None] * len(codes)
+    atual = None
+    for i in range(len(codes)):
+        if r6[i] is not None:
+            atual = r6[i]
+        bloco[i] = atual
+
     anos = {}
-    for code, i in col.items():
+    for i, code in enumerate(codes):
+        if not code:
+            continue
         m = re.match(r"VL_(OBSERVADO|NOTA_MEDIA|INDICADOR_REND|PROJECAO)_(\d+)", code)
         if not m:
             continue
         kind, ano = m.groups()
         ano = int(re.sub(r"\D", "", ano)[:4])
+        if kind == "INDICADOR_REND":
+            # Bug do próprio arquivo do Inep: na planilha "UF e Regiões (AI)"
+            # de 2025, a coluna de Indicador de Rendimento do bloco "Taxa de
+            # Aprovação - 2025" veio com o código VL_INDICADOR_REND_2023
+            # duplicado (deveria ser _2025). O rótulo do bloco (linha 6) é
+            # confiável e resolve a ambiguidade.
+            mb = re.search(r"Taxa de Aprovação - (\d{4})", str(bloco[i]) or "")
+            if mb:
+                ano = int(mb.group(1))
         anos.setdefault(ano, {})[kind] = i
 
     records = []
