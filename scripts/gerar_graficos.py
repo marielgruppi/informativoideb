@@ -81,7 +81,7 @@ def savefig(fig, name):
 # Gráfico 1 — Ideb por rede de ensino, Brasil 2025 e Minas Gerais 2023–2025
 # ---------------------------------------------------------------------------
 def grafico_1():
-    fig, axes = plt.subplots(1, 3, figsize=(15, 4.3), sharey=True)
+    fig, axes = plt.subplots(1, 3, figsize=(14, 5.6), sharey=True)
     for ax, etapa in zip(axes, ETAPAS):
         sub = serie_uf[(serie_uf.ETAPA == etapa) & (serie_uf.ANO.isin([2023, 2025]))]
         mg = sub[sub.UF == "MG"].set_index(["REDE", "ANO"])["IDEB"]
@@ -111,8 +111,6 @@ def grafico_1():
     handles, labels = axes[0].get_legend_handles_labels()
     fig.legend(handles, labels, loc="upper center", ncol=3, frameon=False, bbox_to_anchor=(0.5, 1.06))
     fig.suptitle("Gráfico 1: Ideb por rede de ensino, Brasil 2025 e Minas Gerais, 2023-2025", y=1.14, fontsize=11)
-    fig.text(0.02, -0.05, "Nota: barras hachuradas (rede Municipal) indicam aproximação pela média simples dos municípios de MG; o Inep não publica agregado estadual dessa rede nesta tabela.", fontsize=9, color=TEXT_MUTED)
-    fig.text(0.02, -0.095, "Fonte: Inep/MEC, divulgação Ideb 2025 (por município e por UF).", fontsize=9, color=TEXT_MUTED)
     savefig(fig, "grafico_1")
 
 
@@ -184,8 +182,6 @@ def grafico_evolucao(etapa, numero, titulo):
     # Legenda embaixo (fora da área de plotagem), pra nunca sobrepor o
     # primeiro ponto de nenhuma série.
     ax.legend(frameon=False, loc="upper center", bbox_to_anchor=(0.5, -0.30), ncol=4)
-    if "Municipal" in sub.REDE.unique():
-        fig.text(0.02, -0.40, "Linha tracejada (Municipal): aproximação pela média simples dos municípios de MG.\nO Inep não publica agregado estadual dessa rede nesta tabela.", fontsize=9, color=TEXT_MUTED)
     savefig(fig, f"grafico_{numero}")
 
 
@@ -244,11 +240,24 @@ def grafico_ranking_uf(numero, ano=2025):
     # Ordena pela média do Ideb nas etapas disponíveis (RR não tem valor de
     # anos iniciais em 2025, por isso não dá pra ordenar por uma etapa só).
     ordem = piv.mean(axis=1).sort_values().index.tolist()
+
+    # UF em destaque, além de MG: SP, RJ, ES e o estado com maior Ideb no
+    # ensino médio (rede estadual).
+    top_em = piv["Ensino Médio"].idxmax()
+    destaques = {"MG", "SP", "RJ", "ES", top_em}
+
+    # Brasil entra como referência no topo, fora do ranking das 27 UF.
+    brasil = serie_uf.loc[
+        (serie_uf.NOME == "Brasil") & (serie_uf.REDE == "Estadual") & (serie_uf.ANO == ano),
+        ["ETAPA", "IDEB"],
+    ].set_index("ETAPA")["IDEB"]
+    piv.loc["BRASIL"] = [brasil.get(e) for e in cores]
+    ordem = ordem + ["BRASIL"]
     piv = piv.loc[ordem]
 
     altura_barras = max(3.2, 0.28 * len(ordem))
     header_in = 1.3
-    bottom_in = 0.75
+    bottom_in = 0.55
     fig_h = altura_barras + header_in
     fig, ax = plt.subplots(figsize=(8, fig_h))
     fig.subplots_adjust(top=altura_barras / fig_h, bottom=bottom_in / fig_h)
@@ -262,26 +271,24 @@ def grafico_ranking_uf(numero, ano=2025):
     }
     for etapa, cor in cores.items():
         barras = ax.barh([yy + deslocs[etapa] for yy in y], piv[etapa], height=h * 0.92, color=cor, label=ETAPA_ABREV[etapa])
-        # Rotula só a UF em destaque (MG), pra não poluir com 27 UF x 3 etapas.
-        rotulos = ["" if uf != "MG" else f"{v:.1f}" for uf, v in zip(ordem, piv[etapa])]
+        # Rotula só as UF em destaque, pra não poluir com 28 linhas x 3 etapas.
+        rotulos = [f"{v:.1f}" if (uf in destaques or uf == "BRASIL") else "" for uf, v in zip(ordem, piv[etapa])]
         ax.bar_label(barras, labels=rotulos, fontsize=8.5, padding=2, color=TEXT_MUTED, fontweight="bold")
 
     ax.set_yticks(y)
-    labels = ax.set_yticklabels(ordem)
-    if "MG" in ordem:
-        i_mg = ordem.index("MG")
-        labels[i_mg].set_fontweight("bold")
-        ax.axhspan(i_mg - 1.5 * h, i_mg + 1.5 * h, color=GRID, alpha=0.6, zorder=0)
+    nomes_eixo = ["Brasil" if uf == "BRASIL" else uf for uf in ordem]
+    labels = ax.set_yticklabels(nomes_eixo)
+    for uf, lab in zip(ordem, labels):
+        if uf in destaques or uf == "BRASIL":
+            lab.set_fontweight("bold")
+    i_mg = ordem.index("MG")
+    ax.axhspan(i_mg - 1.5 * h, i_mg + 1.5 * h, color=GRID, alpha=0.6, zorder=0)
+    i_br = ordem.index("BRASIL")
+    ax.axhline(i_br - 1.5 * h, color=TEXT_MUTED, linewidth=0.8, zorder=1)
     ax.set_xlabel("Ideb")
     ax.spines[["top", "right"]].set_visible(False)
     fig.suptitle(f"Gráfico {numero}: Ideb da rede estadual por UF e etapa de ensino, {ano}", fontsize=10.5, y=1 - 0.28 / fig_h)
     ax.legend(frameon=False, ncol=3, loc="upper center", bbox_to_anchor=(0.5, 1 - 0.55 / fig_h), bbox_transform=fig.transFigure)
-    fig.text(
-        0.02, -0.55 / fig_h,
-        "Nota: UF ordenadas pela média do Ideb nas três etapas; Minas Gerais em destaque.\n"
-        "Fonte: Inep/MEC, divulgação Ideb 2025 por UF (ranking calculado sobre as 27 unidades da federação).",
-        fontsize=9, color=TEXT_MUTED,
-    )
     savefig(fig, f"grafico_{numero}")
 
 
@@ -307,7 +314,7 @@ def grafico_faixas(rede, etapa, numero, titulo, min_escolas=3):
     # muitas linhas.
     altura_barras = max(3.2, 0.22 * len(pct))
     header_in = 1.3
-    bottom_in = 0.7
+    bottom_in = 0.5
     fig_h = altura_barras + header_in
     fig, ax = plt.subplots(figsize=(8, fig_h))
     fig.subplots_adjust(top=altura_barras / fig_h, bottom=bottom_in / fig_h)
@@ -324,7 +331,6 @@ def grafico_faixas(rede, etapa, numero, titulo, min_escolas=3):
         title="Faixa de Ideb", frameon=False, ncol=4, loc="upper center",
         bbox_to_anchor=(0.5, 1 - 0.55 / fig_h), bbox_transform=fig.transFigure,
     )
-    fig.text(0.02, -0.5 / fig_h, f"SRE com menos de {min_escolas} escolas nessa rede/etapa foram omitidas.", fontsize=9, color=TEXT_MUTED)
     savefig(fig, f"grafico_{numero}")
 
 
@@ -355,35 +361,27 @@ def grafico_inse(numero):
         ("< 4", "Percentual de escolas com Ideb < 4", "CORR_INSE_x_PCT_IDEB_MENOR_4", "P_VALOR_MENOR_4",
          [("Anos Finais do Ensino Fundamental", AQUA), ("Ensino Médio", YELLOW)]),
     ]
-    fig, axes = plt.subplots(1, 2, figsize=(11, 4.6))
+    fig, axes = plt.subplots(1, 2, figsize=(11, 5.4))
     for ax, (faixa, ylabel, col_r, col_p, series) in zip(axes, paineis):
-        for i, (etapa, cor) in enumerate(series):
+        for etapa, cor in series:
             d = serie(etapa, faixa)
-            ax.scatter(d.MEDIA_INSE, d.PCT, s=24, color=cor, alpha=0.8, label=ETAPA_ABREV[etapa])
+            r = float(corr.loc[corr.ETAPA == etapa, col_r].iloc[0])
+            p = float(corr.loc[corr.ETAPA == etapa, col_p].iloc[0])
+            p_txt = "p < 0,01" if p < 0.01 else f"p = {p:.2f}".replace(".", ",")
+            rotulo = f"{ETAPA_ABREV[etapa]}: r = {r:.2f} ({p_txt})".replace(".", ",")
+            ax.scatter(d.MEDIA_INSE, d.PCT, s=24, color=cor, alpha=0.8, label=rotulo)
             if len(d) >= 2:
                 b, a = np.polyfit(d.MEDIA_INSE, d.PCT, 1)
                 xs = np.linspace(d.MEDIA_INSE.min(), d.MEDIA_INSE.max(), 50)
                 ax.plot(xs, a + b * xs, color=cor, linewidth=1.5, linestyle="--")
-            r = float(corr.loc[corr.ETAPA == etapa, col_r].iloc[0])
-            p = float(corr.loc[corr.ETAPA == etapa, col_p].iloc[0])
-            p_txt = "p < 0,01" if p < 0.01 else f"p = {p:.2f}".replace(".", ",")
-            ax.text(
-                0.03, 0.96 - i * 0.08, f"{ETAPA_ABREV[etapa]}: r = {r:.2f} ({p_txt})".replace(".", ","),
-                transform=ax.transAxes, fontsize=8.5, color=cor, va="top", fontweight="bold",
-            )
         ax.set_xlabel("Inse médio da SRE (rede estadual)")
         ax.set_ylabel(ylabel)
         ax.spines[["top", "right"]].set_visible(False)
+        ax.legend(frameon=False, loc="upper center", bbox_to_anchor=(0.5, -0.16), fontsize=8.5)
 
     fig.suptitle(
         f"Gráfico {numero}: Inse médio da SRE e percentual de escolas estaduais por faixa de Ideb, MG, 2023-2025",
-        fontsize=10.5, y=1.06,
-    )
-    fig.text(
-        0.02, -0.14,
-        "Nota: cada ponto é uma SRE (rede estadual, N=47); linha tracejada é a reta de regressão linear.\n"
-        "Fonte: Inep/MEC (Ideb 2025) e Inep, Indicador de Nível Socioeconômico das Escolas de Educação Básica (Inse), edição 2023.",
-        fontsize=9, color=TEXT_MUTED,
+        fontsize=10.5, y=1.03,
     )
     savefig(fig, f"grafico_{numero}")
 
@@ -410,12 +408,6 @@ def grafico_mediana_rgint(numero):
     fig.suptitle(
         f"Gráfico {numero}: Mediana do Ideb das escolas estaduais, ensino médio, por RGInt, MG, 2025",
         fontsize=10.5, y=1.03,
-    )
-    fig.text(
-        0.02, -0.11,
-        f"Nota: linha tracejada é o Ideb da rede estadual de MG no ensino médio ({mg_ideb:.1f}).\n"
-        "Fonte: Inep/MEC, divulgação Ideb 2025 por escola.",
-        fontsize=9, color=TEXT_MUTED,
     )
     savefig(fig, f"grafico_{numero}")
 

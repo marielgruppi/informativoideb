@@ -171,7 +171,7 @@ children.push(
     "2025 é justamente o ano-alvo dessa meta de longo prazo para os anos finais do ensino fundamental. Minas Gerais não a alcançou. O estado registrou Ideb de 5,3 nessa etapa, tanto na rede estadual quanto na pública, abaixo dos 6,0 pretendidos e também abaixo da meta mais recente fixada pelo próprio Plano Estadual de Educação para o período, de 5,5, embora a distância em relação a 2023 tenha diminuído de forma expressiva. O Brasil como um todo também está distante desse patamar, com Ideb de 5,1 na rede estadual na mesma etapa em 2025."
   )
 );
-children.push(imagem(`${G}/grafico_1.png`));
+children.push(imagem(`${G}/grafico_1.png`, 9600));
 children.push(
   body(
     "De maneira geral, os dados de 2025 apontam para avanços em todas as etapas e redes, revertendo a estagnação observada na comparação anterior, entre 2017 e 2019. Nos anos iniciais, o Ideb estadual passou de 6,2 para 6,7 entre 2023 e 2025. Nos anos finais, a variação foi de 4,6 para 5,3 e, no ensino médio, de 4,0 para 4,5. Minas Gerais superou a média nacional em todas as etapas e redes comparáveis, com 6,7 contra 6,4 nos anos iniciais na rede estadual, 5,3 contra 5,1 nos anos finais e 4,5 contra 4,3 no ensino médio. À medida que se avança no processo de escolarização, o desempenho absoluto ainda cai, de modo que os anos finais e o ensino médio seguem com Ideb mais baixo que os anos iniciais, mas o ritmo de melhora entre 2023 e 2025 foi mais forte justamente nessas duas etapas mais desafiadoras."
@@ -184,7 +184,7 @@ children.push(
 );
 children.push(...fonteNota([
   "Fonte: Inep/MEC, divulgação Ideb 2025 (por município e por UF).",
-  "Nota: rede pública considera as escolas municipais, estaduais e federais. A rede municipal, quando aparece nos Gráficos 1 e 5, é uma aproximação pela média simples dos municípios de MG (ver observação no próprio gráfico).",
+  "Nota: barras hachuradas (rede Municipal) indicam aproximação pela média simples dos municípios de MG; o Inep não publica agregado estadual dessa rede nesta tabela. Rede pública considera as escolas municipais, estaduais e federais.",
 ]));
 
 children.push(h2("Anos iniciais do ensino fundamental"));
@@ -194,7 +194,10 @@ children.push(
   )
 );
 children.push(imagem(`${G}/grafico_2.png`));
-children.push(...fonteNota(["Fonte: Inep/MEC."]));
+children.push(...fonteNota([
+  "Fonte: Inep/MEC.",
+  "Nota: linha tracejada (Municipal) é aproximação pela média simples dos municípios de MG; o Inep não publica agregado estadual dessa rede nesta série.",
+]));
 
 children.push(h2("Anos finais do ensino fundamental e ensino médio"));
 children.push(imagem(`${G}/grafico_3.png`));
@@ -212,7 +215,10 @@ children.push(
     }),
   ])
 );
-children.push(...fonteNota(["Fonte: Inep/MEC (ambos os gráficos)."]));
+children.push(...fonteNota([
+  "Fonte: Inep/MEC (Gráficos 3 e 4).",
+  "Nota: no Gráfico 3, linha tracejada (Municipal) é aproximação pela média simples dos municípios de MG; o Inep não publica agregado estadual dessa rede nesta série. O Gráfico 4 não inclui a rede municipal por ter poucas escolas ofertantes do ensino médio.",
+]));
 
 children.push(h2("Subíndices: rendimento × desempenho"));
 children.push(
@@ -221,12 +227,15 @@ children.push(
   )
 );
 children.push(imagem(`${G}/grafico_5.png`));
+children.push(...fonteNota([
+  "Fonte: Inep/MEC.",
+  "Nota: barras hachuradas (rede Municipal) indicam aproximação pela média simples dos municípios de MG. Δ% Desempenho e Δ% Rendimento são variações percentuais relativas (não pontos percentuais), calculadas como (valor 2025 − valor 2023) / valor 2023 × 100.",
+]));
 children.push(
   body(
     "Nas redes pública e estadual, os dois subíndices subiram juntos nas três etapas, o que sinaliza uma melhora genuína, em que o avanço na aprovação veio acompanhado de aprendizagem maior, e não de uma aprovação mais frouxa. O padrão mais chamativo é o da rede privada, cujo rendimento ficou estável nos anos iniciais e subiu nos anos finais e no ensino médio, entre 0,3% e 14,0%, mas cujo desempenho no Saeb caiu nas três etapas. Ou seja, a rede privada aprovou mais alunos sem que isso viesse acompanhado, em média, de mais aprendizagem, movimento inverso ao observado nas redes públicas."
   )
 );
-children.push(...fonteNota(["Fonte: Inep/MEC."]));
 
 children.push(h2("E o desempenho da rede estadual?"));
 children.push(
@@ -239,9 +248,11 @@ children.push(
     "O avanço mais notável ocorreu na rede pública dos anos finais do fundamental. Minas Gerais saltou da 16ª para a 4ª posição entre os estados, com alta de 0,6 ponto, de 4,7 para 5,3, um dos maiores avanços do país nessa rede e etapa."
   )
 );
-children.push(...fonteNota(["Fonte: Inep/MEC, divulgação Ideb 2025 por UF (ranking calculado sobre as 27 unidades da federação)."]));
 children.push(imagem(`${G}/grafico_6.png`, 8600));
-children.push(...fonteNota(["Fonte: Inep/MEC (Gráfico 6)."]));
+children.push(...fonteNota([
+  "Fonte: Inep/MEC, divulgação Ideb 2025 por UF (ranking calculado sobre as 27 unidades da federação).",
+  "Nota: UF ordenadas pela média do Ideb nas três etapas; Brasil no topo, fora do ranking das 27 UF. MG, SP, RJ, ES e o estado com maior Ideb no ensino médio (PR) em destaque.",
+]));
 
 children.push(h2("Recorte regional: rede estadual"));
 children.push(imagem(`${G}/grafico_7.png`, 8600));
@@ -262,14 +273,10 @@ children.push(
     "O ensino médio é a etapa com o cenário mais crítico. Menos de 1% das escolas estaduais do estado atingem Ideb igual ou acima de 6, e 72% estão na faixa de 4 a 4,9. Januária, Teófilo Otoni e Montes Claros concentram os maiores percentuais de escolas com Ideb abaixo de 4 nessa etapa, com 38%, 33% e 30%, respectivamente."
   )
 );
-children.push(
-  ...nota(
-    "OBSERVAÇÃO METODOLÓGICA",
-    "Nos Gráficos 7 a 9, SRE com menos de 3 escolas naquela rede/etapa foram omitidas para evitar percentuais de \"tudo ou nada\" sem significado (afetou Campo Belo, Curvelo, Itajubá, Metropolitana A e Pirapora, só nos anos iniciais). É um corte mais simples do que o critério de participação usado pelo Inep para divulgar resultado por escola (10 alunos presentes e 80% de participação), que não pôde ser aplicado aqui porque os arquivos de divulgação não trazem o número de alunos avaliados, apenas o Ideb já calculado.",
-    "Belo Horizonte foi reclassificada de \"Metropolitana\", rótulo genérico que vinha no cruzamento, para SRE Metropolitana C, conforme a SEE-MG. Correção já aplicada na planilha-fonte e nos gráficos."
-  )
-);
-children.push(...fonteNota(["Fonte: Inep/MEC (Gráficos 7, 8 e 9)."]));
+children.push(...fonteNota([
+  "Fonte: Inep/MEC (Gráficos 7, 8 e 9).",
+  "Nota: SRE com menos de 3 escolas naquela rede/etapa foram omitidas, para evitar percentuais de \"tudo ou nada\" sem significado (afetou Campo Belo, Curvelo, Itajubá, Metropolitana A e Pirapora, só nos anos iniciais). Belo Horizonte foi reclassificada de \"Metropolitana\", rótulo genérico que vinha no cruzamento original, para SRE Metropolitana C, conforme a SEE-MG.",
+]));
 
 children.push(h2("Recorte regional: rede municipal"));
 children.push(
@@ -284,7 +291,10 @@ children.push(
 );
 children.push(imagem(`${G}/grafico_10.png`, 8600));
 children.push(imagem(`${G}/grafico_11.png`, 8600));
-children.push(...fonteNota(["Fonte: Inep/MEC (Gráficos 10 e 11)."]));
+children.push(...fonteNota([
+  "Fonte: Inep/MEC (Gráficos 10 e 11).",
+  "Nota: SRE com menos de 3 escolas municipais naquela etapa foram omitidas.",
+]));
 
 children.push(h2("Nível socioeconômico (Inse)"));
 children.push(
@@ -313,7 +323,10 @@ children.push(
   ])
 );
 children.push(imagem(`${G}/grafico_12.png`, 8600));
-children.push(...fonteNota(["Fonte: Inep/MEC, Indicador de Nível Socioeconômico das Escolas de Educação Básica (Inse), edição 2023."]));
+children.push(...fonteNota([
+  "Fonte: Inep/MEC (Ideb 2025) e Inep, Indicador de Nível Socioeconômico das Escolas de Educação Básica (Inse), edição 2023.",
+  "Nota: cada ponto é uma SRE (rede estadual, N=47); linha tracejada é a reta de regressão linear.",
+]));
 
 children.push(h2("O que os dados do Ideb informam"));
 children.push(
@@ -327,7 +340,10 @@ children.push(
   )
 );
 children.push(imagem(`${G}/grafico_13.png`, 8600));
-children.push(...fonteNota(["Fonte: Inep/MEC, divulgação Ideb 2025 por escola."]));
+children.push(...fonteNota([
+  "Fonte: Inep/MEC, divulgação Ideb 2025 por escola.",
+  "Nota: linha tracejada é o Ideb da rede estadual de MG no ensino médio (4,5).",
+]));
 children.push(
   bodyMixed([
     new TextRun({
