@@ -171,7 +171,11 @@ children.push(
     "2025 é justamente o ano-alvo dessa meta de longo prazo para os anos finais do ensino fundamental. Minas Gerais não a alcançou. O estado registrou Ideb de 5,3 nessa etapa, tanto na rede estadual quanto na pública, abaixo dos 6,0 pretendidos e também abaixo da meta mais recente fixada pelo próprio Plano Estadual de Educação para o período, de 5,5, embora a distância em relação a 2023 tenha diminuído de forma expressiva. O Brasil como um todo também está distante desse patamar, com Ideb de 5,1 na rede estadual na mesma etapa em 2025."
   )
 );
-children.push(imagem(`${G}/grafico_1.png`, 9600));
+children.push(imagem(`${G}/grafico_1.png`, 8600));
+children.push(...fonteNota([
+  "Fonte: Inep/MEC, divulgação Ideb 2025 (por município e por UF).",
+  "Nota: barras hachuradas (rede Municipal) indicam aproximação pela média simples dos municípios de MG; o Inep não publica agregado estadual dessa rede nesta tabela. Rede pública considera as escolas municipais, estaduais e federais.",
+]));
 children.push(
   body(
     "De maneira geral, os dados de 2025 apontam para avanços em todas as etapas e redes, revertendo a estagnação observada na comparação anterior, entre 2017 e 2019. Nos anos iniciais, o Ideb estadual passou de 6,2 para 6,7 entre 2023 e 2025. Nos anos finais, a variação foi de 4,6 para 5,3 e, no ensino médio, de 4,0 para 4,5. Minas Gerais superou a média nacional em todas as etapas e redes comparáveis, com 6,7 contra 6,4 nos anos iniciais na rede estadual, 5,3 contra 5,1 nos anos finais e 4,5 contra 4,3 no ensino médio. À medida que se avança no processo de escolarização, o desempenho absoluto ainda cai, de modo que os anos finais e o ensino médio seguem com Ideb mais baixo que os anos iniciais, mas o ritmo de melhora entre 2023 e 2025 foi mais forte justamente nessas duas etapas mais desafiadoras."
@@ -182,10 +186,6 @@ children.push(
     "Desde 2005, quando a série histórica do Ideb foi iniciada, os anos iniciais tiveram o maior avanço, tendo alcançado a meta de longo prazo de 6,0 ainda na década passada. O ciclo de 2021 marcou uma queda em todas as etapas, refletindo o impacto da pandemia de Covid-19 sobre a aprendizagem. Em 2025, no entanto, as três etapas atingiram os maiores valores da própria série histórica iniciada em 2005 (Gráfico 2)."
   )
 );
-children.push(...fonteNota([
-  "Fonte: Inep/MEC, divulgação Ideb 2025 (por município e por UF).",
-  "Nota: barras hachuradas (rede Municipal) indicam aproximação pela média simples dos municípios de MG; o Inep não publica agregado estadual dessa rede nesta tabela. Rede pública considera as escolas municipais, estaduais e federais.",
-]));
 
 children.push(h2("Anos iniciais do ensino fundamental"));
 children.push(
@@ -193,15 +193,19 @@ children.push(
     "Entre 2023 e 2025, o Ideb dos anos iniciais avançou em todas as redes de ensino em Minas Gerais, passando de 6,2 para 6,7 na rede estadual e de 6,1 para 6,4 na rede pública. Trata-se do maior valor de toda a série iniciada em 2005, superando inclusive o patamar pré-pandemia, de 6,5 em 2017 e 2019. A queda registrada em 2021, quando o Ideb estadual recuou para 6,0, foi portanto temporária, pois a etapa não apenas recuperou como ultrapassou a trajetória anterior à pandemia."
   )
 );
-children.push(imagem(`${G}/grafico_2.png`));
+children.push(imagem(`${G}/grafico_2.png`, 8600));
 children.push(...fonteNota([
   "Fonte: Inep/MEC.",
   "Nota: linha tracejada (Municipal) é aproximação pela média simples dos municípios de MG; o Inep não publica agregado estadual dessa rede nesta série.",
 ]));
 
 children.push(h2("Anos finais do ensino fundamental e ensino médio"));
-children.push(imagem(`${G}/grafico_3.png`));
-children.push(imagem(`${G}/grafico_4.png`));
+children.push(imagem(`${G}/grafico_3.png`, 8600));
+children.push(imagem(`${G}/grafico_4.png`, 8600));
+children.push(...fonteNota([
+  "Fonte: Inep/MEC (Gráficos 3 e 4).",
+  "Nota: no Gráfico 3, linha tracejada (Municipal) é aproximação pela média simples dos municípios de MG; o Inep não publica agregado estadual dessa rede nesta série. O Gráfico 4 não inclui a rede municipal por ter poucas escolas ofertantes do ensino médio.",
+]));
 children.push(
   body(
     "Os anos finais do ensino fundamental tiveram o avanço mais expressivo do ciclo. O Ideb estadual saltou de 4,6, em 2023, para 5,3, em 2025, o maior valor da série histórica, superando até o pico local de 2021, de 5,0, atingido em condições atípicas de pandemia. A rede pública seguiu o mesmo padrão, passando de 4,7 para 5,3."
@@ -215,10 +219,6 @@ children.push(
     }),
   ])
 );
-children.push(...fonteNota([
-  "Fonte: Inep/MEC (Gráficos 3 e 4).",
-  "Nota: no Gráfico 3, linha tracejada (Municipal) é aproximação pela média simples dos municípios de MG; o Inep não publica agregado estadual dessa rede nesta série. O Gráfico 4 não inclui a rede municipal por ter poucas escolas ofertantes do ensino médio.",
-]));
 
 children.push(h2("Subíndices: rendimento × desempenho"));
 children.push(
@@ -226,7 +226,7 @@ children.push(
     "Como o Ideb sintetiza os resultados de rendimento e desempenho, é importante entender o comportamento dos seus subíndices. O Gráfico 5 mostra a variação percentual do desempenho (nota média padronizada obtida pelo Saeb) e do rendimento (indicador de aprovação) entre 2023 e 2025, em cada rede de ensino."
   )
 );
-children.push(imagem(`${G}/grafico_5.png`));
+children.push(imagem(`${G}/grafico_5.png`, 8600));
 children.push(...fonteNota([
   "Fonte: Inep/MEC.",
   "Nota: barras hachuradas (rede Municipal) indicam aproximação pela média simples dos municípios de MG. Δ% Desempenho e Δ% Rendimento são variações percentuais relativas (não pontos percentuais), calculadas como (valor 2025 − valor 2023) / valor 2023 × 100.",
@@ -258,6 +258,10 @@ children.push(h2("Recorte regional: rede estadual"));
 children.push(imagem(`${G}/grafico_7.png`, 8600));
 children.push(imagem(`${G}/grafico_8.png`, 8600));
 children.push(imagem(`${G}/grafico_9.png`, 8600));
+children.push(...fonteNota([
+  "Fonte: Inep/MEC (Gráficos 7, 8 e 9).",
+  "Nota: SRE com menos de 3 escolas naquela rede/etapa foram omitidas, para evitar percentuais de \"tudo ou nada\" sem significado (afetou Campo Belo, Curvelo, Itajubá, Metropolitana A e Pirapora, só nos anos iniciais). Belo Horizonte foi reclassificada de \"Metropolitana\", rótulo genérico que vinha no cruzamento original, para SRE Metropolitana C, conforme a SEE-MG.",
+]));
 children.push(
   body(
     "Nos anos iniciais, o quadro regional é bastante positivo. Em 34 das SRE analisadas, mais de 90% das escolas estaduais têm Ideb igual ou acima de 6, e em 12 delas todas as escolas atingem essa faixa. As SRE de Januária, Almenara e Carangola apresentam os menores percentuais nessa faixa, entre 48% e 50%, ainda assim a maioria das escolas."
@@ -273,10 +277,6 @@ children.push(
     "O ensino médio é a etapa com o cenário mais crítico. Menos de 1% das escolas estaduais do estado atingem Ideb igual ou acima de 6, e 72% estão na faixa de 4 a 4,9. Januária, Teófilo Otoni e Montes Claros concentram os maiores percentuais de escolas com Ideb abaixo de 4 nessa etapa, com 38%, 33% e 30%, respectivamente."
   )
 );
-children.push(...fonteNota([
-  "Fonte: Inep/MEC (Gráficos 7, 8 e 9).",
-  "Nota: SRE com menos de 3 escolas naquela rede/etapa foram omitidas, para evitar percentuais de \"tudo ou nada\" sem significado (afetou Campo Belo, Curvelo, Itajubá, Metropolitana A e Pirapora, só nos anos iniciais). Belo Horizonte foi reclassificada de \"Metropolitana\", rótulo genérico que vinha no cruzamento original, para SRE Metropolitana C, conforme a SEE-MG.",
-]));
 
 children.push(h2("Recorte regional: rede municipal"));
 children.push(

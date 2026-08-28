@@ -110,7 +110,7 @@ def grafico_1():
     axes[0].set_ylabel("Ideb")
     handles, labels = axes[0].get_legend_handles_labels()
     fig.legend(handles, labels, loc="upper center", ncol=3, frameon=False, bbox_to_anchor=(0.5, 1.06))
-    fig.suptitle("Gráfico 1: Ideb por rede de ensino, Brasil 2025 e Minas Gerais, 2023-2025", y=1.14, fontsize=11)
+    fig.suptitle("Gráfico 1: Ideb por rede de ensino, Brasil 2025 e Minas Gerais, 2023-2025", y=1.14, fontsize=19)
     savefig(fig, "grafico_1")
 
 
@@ -218,7 +218,7 @@ def grafico_5():
     axes[0].set_ylabel("Variação percentual (%)")
     handles, labels = axes[0].get_legend_handles_labels()
     fig.legend(handles, labels, loc="upper center", ncol=2, frameon=False, bbox_to_anchor=(0.5, 1.08))
-    fig.suptitle("Gráfico 5: Variação percentual de desempenho (Saeb) e rendimento por rede, MG, 2023-2025", y=1.16, fontsize=11)
+    fig.suptitle("Gráfico 5: Variação percentual de desempenho (Saeb) e rendimento por rede, MG, 2023-2025", y=1.16, fontsize=16.5)
     savefig(fig, "grafico_5")
 
 
@@ -287,7 +287,7 @@ def grafico_ranking_uf(numero, ano=2025):
     ax.axhline(i_br - 1.5 * h, color=TEXT_MUTED, linewidth=0.8, zorder=1)
     ax.set_xlabel("Ideb")
     ax.spines[["top", "right"]].set_visible(False)
-    fig.suptitle(f"Gráfico {numero}: Ideb da rede estadual por UF e etapa de ensino, {ano}", fontsize=10.5, y=1 - 0.28 / fig_h)
+    fig.suptitle(f"Gráfico {numero}: Ideb da rede estadual por UF e etapa de ensino, {ano}", fontsize=11, y=1 - 0.28 / fig_h)
     ax.legend(frameon=False, ncol=3, loc="upper center", bbox_to_anchor=(0.5, 1 - 0.55 / fig_h), bbox_transform=fig.transFigure)
     savefig(fig, f"grafico_{numero}")
 
@@ -326,7 +326,7 @@ def grafico_faixas(rede, etapa, numero, titulo, min_escolas=3):
     ax.set_xlim(0, 100)
     ax.set_xlabel("Percentual de escolas")
     ax.spines[["top", "right"]].set_visible(False)
-    fig.suptitle(f"Gráfico {numero}: {titulo}", fontsize=10.5, y=1 - 0.28 / fig_h)
+    fig.suptitle(f"Gráfico {numero}: {titulo}", fontsize=11, y=1 - 0.28 / fig_h)
     ax.legend(
         title="Faixa de Ideb", frameon=False, ncol=4, loc="upper center",
         bbox_to_anchor=(0.5, 1 - 0.55 / fig_h), bbox_transform=fig.transFigure,
@@ -381,7 +381,7 @@ def grafico_inse(numero):
 
     fig.suptitle(
         f"Gráfico {numero}: Inse médio da SRE e percentual de escolas estaduais por faixa de Ideb, MG, 2023-2025",
-        fontsize=10.5, y=1.03,
+        fontsize=15, y=1.03,
     )
     savefig(fig, f"grafico_{numero}")
 
@@ -407,7 +407,7 @@ def grafico_mediana_rgint(numero):
     ax.spines[["top", "right"]].set_visible(False)
     fig.suptitle(
         f"Gráfico {numero}: Mediana do Ideb das escolas estaduais, ensino médio, por RGInt, MG, 2025",
-        fontsize=10.5, y=1.03,
+        fontsize=11, y=1.03,
     )
     savefig(fig, f"grafico_{numero}")
 
