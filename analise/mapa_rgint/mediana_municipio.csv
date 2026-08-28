@@ -1,0 +1,848 @@
+CO_MUNICIPIO,NO_MUNICIPIO,RGINT,IDEB_MEDIANA_MUNICIPIO,IDEB_MEDIANA_RGINT,ABAIXO_MEDIANA_RGINT
+3100104,Abadia dos Dourados,Uberlândia,4.1,4.6,True
+3100203,Abaeté,Divinópolis,4.9,4.7,False
+3100302,Abre Campo,Juiz de Fora,4.949999999999999,4.5,False
+3100401,Acaiaca,Juiz de Fora,4.6,4.5,False
+3100500,Açucena,Ipatinga,4.9,4.7,False
+3100609,Água Boa,Teófilo Otoni,4.65,4.2,False
+3100708,Água Comprida,Uberaba,4.5,4.5,False
+3100807,Aguanil,Varginha,4.8,4.5,False
+3100906,Águas Formosas,Teófilo Otoni,3.9000000000000004,4.2,True
+3101003,Águas Vermelhas,Teófilo Otoni,4.3,4.2,False
+3101102,Aimorés,Governador Valadares,4.7,4.6,False
+3101201,Aiuruoca,Pouso Alegre,5.1,4.8,False
+3101300,Alagoa,Pouso Alegre,5.3,4.8,False
+3101409,Albertina,Pouso Alegre,5.2,4.8,False
+3101508,Além Paraíba,Juiz de Fora,3.5,4.5,True
+3101607,Alfenas,Varginha,4.5,4.5,False
+3101631,Alfredo Vasconcelos,Barbacena,4.3,4.8,True
+3101706,Almenara,Teófilo Otoni,4.1,4.2,True
+3101805,Alpercata,Governador Valadares,4.3,4.6,True
+3101904,Alpinópolis,Varginha,4.2,4.5,True
+3102001,Alterosa,Varginha,5.4,4.5,False
+3102050,Alto Caparaó,Juiz de Fora,4.8,4.5,False
+3102100,Alto Rio Doce,Barbacena,5.0,4.8,False
+3102209,Alvarenga,Ipatinga,4.3,4.7,True
+3102308,Alvinópolis,Juiz de Fora,4.0,4.5,True
+3102407,Alvorada de Minas,Teófilo Otoni,4.199999999999999,4.2,True
+3102506,Amparo do Serra,Juiz de Fora,4.4,4.5,True
+3102605,Andradas,Pouso Alegre,4.7,4.8,True
+3102704,Cachoeira de Pajeú,Teófilo Otoni,4.2,4.2,False
+3102803,Andrelândia,Juiz de Fora,4.7,4.5,False
+3102852,Angelândia,Teófilo Otoni,4.6,4.2,False
+3102902,Antônio Carlos,Barbacena,4.449999999999999,4.8,True
+3103009,Antônio Dias,Ipatinga,4.5,4.7,True
+3103108,Antônio Prado de Minas,Juiz de Fora,5.5,4.5,False
+3103207,Araçaí,Belo Horizonte,4.3,4.4,True
+3103306,Aracitaba,Juiz de Fora,3.3,4.5,True
+3103405,Araçuaí,Teófilo Otoni,4.3,4.2,False
+3103504,Araguari,Uberlândia,4.6,4.6,False
+3103603,Arantina,Juiz de Fora,4.3,4.5,True
+3103702,Araponga,Juiz de Fora,4.85,4.5,False
+3103751,Araporã,Uberlândia,4.6,4.6,False
+3103801,Arapuá,Patos de Minas,5.4,4.4,False
+3103900,Araújos,Divinópolis,4.9,4.7,False
+3104007,Araxá,Uberaba,4.5,4.5,False
+3104106,Arceburgo,Varginha,3.1,4.5,True
+3104205,Arcos,Divinópolis,4.5,4.7,True
+3104304,Areado,Varginha,4.8,4.5,False
+3104403,Argirita,Juiz de Fora,4.4,4.5,True
+3104452,Aricanduva,Teófilo Otoni,4.7,4.2,False
+3104502,Arinos,Patos de Minas,4.1,4.4,True
+3104601,Astolfo Dutra,Juiz de Fora,4.35,4.5,True
+3104700,Ataléia,Teófilo Otoni,4.1,4.2,True
+3104809,Augusto de Lima,Belo Horizonte,4.3,4.4,True
+3104908,Baependi,Pouso Alegre,5.15,4.8,False
+3105004,Baldim,Belo Horizonte,4.6,4.4,False
+3105103,Bambuí,Divinópolis,4.65,4.7,True
+3105202,Bandeira,Teófilo Otoni,5.1,4.2,False
+3105301,Bandeira do Sul,Pouso Alegre,4.7,4.8,True
+3105400,Barão de Cocais,Belo Horizonte,4.85,4.4,False
+3105509,Barão do Monte Alto,Juiz de Fora,4.449999999999999,4.5,True
+3105608,Barbacena,Barbacena,5.0,4.8,False
+3105707,Barra Longa,Juiz de Fora,4.3,4.5,True
+3105905,Barroso,Barbacena,4.9,4.8,False
+3106002,Bela Vista de Minas,Ipatinga,4.3,4.7,True
+3106101,Belmiro Braga,Juiz de Fora,3.9,4.5,True
+3106200,Belo Horizonte,Belo Horizonte,4.5,4.4,False
+3106309,Belo Oriente,Ipatinga,4.5,4.7,True
+3106408,Belo Vale,Barbacena,4.9,4.8,False
+3106507,Berilo,Teófilo Otoni,4.6,4.2,False
+3106606,Bertópolis,Teófilo Otoni,4.05,4.2,True
+3106655,Berizal,Montes Claros,3.9,4.2,True
+3106705,Betim,Belo Horizonte,4.4,4.4,False
+3106804,Bias Fortes,Juiz de Fora,4.3,4.5,True
+3106903,Bicas,Juiz de Fora,4.7,4.5,False
+3107000,Biquinhas,Divinópolis,5.5,4.7,False
+3107109,Boa Esperança,Varginha,4.2,4.5,True
+3107208,Bocaina de Minas,Juiz de Fora,5.6,4.5,False
+3107307,Bocaiúva,Montes Claros,3.8499999999999996,4.2,True
+3107406,Bom Despacho,Divinópolis,4.75,4.7,False
+3107505,Bom Jardim de Minas,Juiz de Fora,4.9,4.5,False
+3107604,Bom Jesus da Penha,Varginha,4.9,4.5,False
+3107703,Bom Jesus do Amparo,Belo Horizonte,4.3,4.4,True
+3107802,Bom Jesus do Galho,Ipatinga,4.8,4.7,False
+3107901,Bom Repouso,Pouso Alegre,4.4,4.8,True
+3108008,Bom Sucesso,Varginha,4.5,4.5,False
+3108107,Bonfim,Divinópolis,5.2,4.7,False
+3108206,Bonfinópolis de Minas,Patos de Minas,4.8,4.4,False
+3108255,Bonito de Minas,Montes Claros,3.9,4.2,True
+3108305,Borda da Mata,Pouso Alegre,5.45,4.8,False
+3108404,Botelhos,Pouso Alegre,4.9,4.8,False
+3108503,Botumirim,Montes Claros,4.75,4.2,False
+3108552,Brasilândia de Minas,Patos de Minas,4.1,4.4,True
+3108602,Brasília de Minas,Montes Claros,4.2,4.2,False
+3108701,Brás Pires,Juiz de Fora,5.1,4.5,False
+3108800,Braúnas,Ipatinga,4.5,4.7,True
+3108909,Brazópolis,Pouso Alegre,4.95,4.8,False
+3109006,Brumadinho,Belo Horizonte,4.6,4.4,False
+3109105,Bueno Brandão,Pouso Alegre,5.2,4.8,False
+3109204,Buenópolis,Belo Horizonte,4.6,4.4,False
+3109253,Bugre,Ipatinga,4.5,4.7,True
+3109303,Buritis,Patos de Minas,4.2,4.4,True
+3109402,Buritizeiro,Montes Claros,4.25,4.2,False
+3109451,Cabeceira Grande,Patos de Minas,4.550000000000001,4.4,False
+3109501,Cabo Verde,Varginha,4.3,4.5,True
+3109600,Cachoeira da Prata,Belo Horizonte,5.3,4.4,False
+3109709,Cachoeira de Minas,Pouso Alegre,5.300000000000001,4.8,False
+3109808,Cachoeira Dourada,Uberlândia,4.9,4.6,False
+3109907,Caetanópolis,Belo Horizonte,4.1,4.4,True
+3110004,Caeté,Belo Horizonte,5.1,4.4,False
+3110103,Caiana,Juiz de Fora,3.8,4.5,True
+3110202,Cajuri,Juiz de Fora,4.7,4.5,False
+3110301,Caldas,Pouso Alegre,4.8,4.8,False
+3110400,Camacho,Divinópolis,4.5,4.7,True
+3110509,Camanducaia,Pouso Alegre,4.25,4.8,True
+3110608,Cambuí,Pouso Alegre,4.25,4.8,True
+3110707,Cambuquira,Varginha,4.35,4.5,True
+3110806,Campanário,Teófilo Otoni,4.5,4.2,False
+3110905,Campanha,Varginha,4.1,4.5,True
+3111002,Campestre,Pouso Alegre,4.7,4.8,True
+3111101,Campina Verde,Uberlândia,4.5,4.6,True
+3111150,Campo Azul,Montes Claros,4.3,4.2,False
+3111200,Campo Belo,Varginha,4.6,4.5,False
+3111309,Campo do Meio,Varginha,4.7,4.5,False
+3111408,Campo Florido,Uberaba,4.3,4.5,True
+3111507,Campos Altos,Uberaba,4.7,4.5,False
+3111606,Campos Gerais,Varginha,5.3,4.5,False
+3111705,Canaã,Juiz de Fora,4.7,4.5,False
+3111804,Canápolis,Uberlândia,4.5,4.6,True
+3111903,Cana Verde,Varginha,4.5,4.5,False
+3112000,Candeias,Varginha,4.9,4.5,False
+3112059,Cantagalo,Governador Valadares,3.8,4.6,True
+3112109,Caparaó,Juiz de Fora,4.0,4.5,True
+3112208,Capela Nova,Barbacena,4.9,4.8,False
+3112307,Capelinha,Teófilo Otoni,4.9,4.2,False
+3112406,Capetinga,Varginha,4.7,4.5,False
+3112505,Capim Branco,Belo Horizonte,4.05,4.4,True
+3112604,Capinópolis,Uberlândia,4.0,4.6,True
+3112653,Capitão Andrade,Governador Valadares,4.2,4.6,True
+3112703,Capitão Enéas,Montes Claros,3.5,4.2,True
+3112802,Capitólio,Varginha,4.3,4.5,True
+3112901,Caputira,Juiz de Fora,4.1,4.5,True
+3113008,Caraí,Teófilo Otoni,3.85,4.2,True
+3113107,Caranaíba,Barbacena,4.7,4.8,True
+3113206,Carandaí,Barbacena,4.5,4.8,True
+3113305,Carangola,Juiz de Fora,4.550000000000001,4.5,False
+3113404,Caratinga,Ipatinga,4.75,4.7,False
+3113503,Carbonita,Teófilo Otoni,4.8,4.2,False
+3113602,Careaçu,Pouso Alegre,4.5,4.8,True
+3113701,Carlos Chagas,Teófilo Otoni,3.8,4.2,True
+3113800,Carmésia,Belo Horizonte,4.4,4.4,False
+3113909,Carmo da Cachoeira,Varginha,4.6,4.5,False
+3114006,Carmo da Mata,Divinópolis,4.0,4.7,True
+3114105,Carmo de Minas,Pouso Alegre,4.2,4.8,True
+3114204,Carmo do Cajuru,Divinópolis,4.800000000000001,4.7,False
+3114303,Carmo do Paranaíba,Patos de Minas,4.9,4.4,False
+3114402,Carmo do Rio Claro,Varginha,4.3,4.5,True
+3114501,Carmópolis de Minas,Divinópolis,4.9,4.7,False
+3114550,Carneirinho,Uberaba,4.5,4.5,False
+3114600,Carrancas,Varginha,4.5,4.5,False
+3114709,Carvalhópolis,Varginha,4.7,4.5,False
+3114808,Carvalhos,Pouso Alegre,4.9,4.8,False
+3114907,Casa Grande,Barbacena,5.8,4.8,False
+3115003,Cascalho Rico,Uberlândia,5.0,4.6,False
+3115102,Cássia,Varginha,4.7,4.5,False
+3115201,Conceição da Barra de Minas,Barbacena,4.9,4.8,False
+3115300,Cataguases,Juiz de Fora,4.2,4.5,True
+3115359,Catas Altas,Belo Horizonte,4.9,4.4,False
+3115409,Catas Altas da Noruega,Barbacena,4.3,4.8,True
+3115458,Catuji,Teófilo Otoni,4.4,4.2,False
+3115474,Catuti,Montes Claros,4.5,4.2,False
+3115508,Caxambu,Pouso Alegre,4.9,4.8,False
+3115607,Cedro do Abaeté,Divinópolis,4.3,4.7,True
+3115706,Central de Minas,Governador Valadares,4.6,4.6,False
+3115805,Centralina,Uberlândia,4.2,4.6,True
+3115904,Chácara,Juiz de Fora,4.4,4.5,True
+3116001,Chalé,Juiz de Fora,4.2,4.5,True
+3116100,Chapada do Norte,Teófilo Otoni,4.5,4.2,False
+3116159,Chapada Gaúcha,Montes Claros,4.2,4.2,False
+3116209,Chiador,Juiz de Fora,4.1,4.5,True
+3116308,Cipotânea,Barbacena,4.5,4.8,True
+3116407,Claraval,Varginha,4.2,4.5,True
+3116506,Claro dos Poções,Montes Claros,4.55,4.2,False
+3116605,Cláudio,Divinópolis,4.9,4.7,False
+3116704,Coimbra,Juiz de Fora,3.9,4.5,True
+3116803,Coluna,Governador Valadares,4.6,4.6,False
+3116902,Comendador Gomes,Uberaba,4.7,4.5,False
+3117009,Comercinho,Teófilo Otoni,4.25,4.2,False
+3117108,Conceição da Aparecida,Varginha,4.8,4.5,False
+3117207,Conceição das Pedras,Pouso Alegre,4.8,4.8,False
+3117306,Conceição das Alagoas,Uberaba,4.2,4.5,True
+3117405,Conceição de Ipanema,Juiz de Fora,4.0,4.5,True
+3117504,Conceição do Mato Dentro,Belo Horizonte,4.35,4.4,True
+3117603,Conceição do Pará,Divinópolis,4.6,4.7,True
+3117702,Conceição do Rio Verde,Pouso Alegre,4.2,4.8,True
+3117801,Conceição dos Ouros,Pouso Alegre,4.6,4.8,True
+3117836,Cônego Marinho,Montes Claros,3.9,4.2,True
+3117876,Confins,Belo Horizonte,4.3,4.4,True
+3117900,Congonhal,Pouso Alegre,4.6,4.8,True
+3118007,Congonhas,Barbacena,4.5,4.8,True
+3118106,Congonhas do Norte,Belo Horizonte,3.6,4.4,True
+3118205,Conquista,Uberaba,4.4,4.5,True
+3118304,Conselheiro Lafaiete,Barbacena,4.8,4.8,False
+3118403,Conselheiro Pena,Governador Valadares,4.85,4.6,False
+3118502,Consolação,Pouso Alegre,4.0,4.8,True
+3118601,Contagem,Belo Horizonte,4.4,4.4,False
+3118700,Coqueiral,Varginha,5.0,4.5,False
+3118809,Coração de Jesus,Montes Claros,4.05,4.2,True
+3118908,Cordisburgo,Belo Horizonte,4.65,4.4,False
+3119005,Cordislândia,Varginha,4.6,4.5,False
+3119104,Corinto,Belo Horizonte,4.45,4.4,False
+3119203,Coroaci,Governador Valadares,5.8,4.6,False
+3119302,Coromandel,Patos de Minas,4.9,4.4,False
+3119401,Coronel Fabriciano,Ipatinga,4.95,4.7,False
+3119500,Coronel Murta,Teófilo Otoni,4.3,4.2,False
+3119609,Coronel Pacheco,Juiz de Fora,4.8,4.5,False
+3119708,Coronel Xavier Chaves,Barbacena,5.4,4.8,False
+3119807,Córrego Danta,Divinópolis,3.8,4.7,True
+3119906,Córrego do Bom Jesus,Pouso Alegre,5.2,4.8,False
+3119955,Córrego Fundo,Divinópolis,4.3,4.7,True
+3120003,Córrego Novo,Ipatinga,4.6,4.7,True
+3120102,Couto de Magalhães de Minas,Teófilo Otoni,4.3,4.2,False
+3120151,Crisólita,Teófilo Otoni,3.7,4.2,True
+3120201,Cristais,Varginha,4.6,4.5,False
+3120300,Cristália,Montes Claros,4.0,4.2,True
+3120409,Cristiano Otoni,Barbacena,4.2,4.8,True
+3120508,Cristina,Pouso Alegre,4.3,4.8,True
+3120607,Crucilândia,Divinópolis,4.9,4.7,False
+3120706,Cruzeiro da Fortaleza,Patos de Minas,4.8,4.4,False
+3120805,Cruzília,Pouso Alegre,4.85,4.8,False
+3120839,Cuparaque,Governador Valadares,5.1,4.6,False
+3120870,Curral de Dentro,Montes Claros,4.25,4.2,False
+3120904,Curvelo,Belo Horizonte,4.45,4.4,False
+3121001,Datas,Teófilo Otoni,4.449999999999999,4.2,False
+3121100,Delfim Moreira,Pouso Alegre,4.7,4.8,True
+3121209,Delfinópolis,Varginha,4.2,4.5,True
+3121258,Delta,Uberaba,4.1,4.5,True
+3121308,Descoberto,Juiz de Fora,5.0,4.5,False
+3121407,Desterro de Entre Rios,Barbacena,5.0,4.8,False
+3121506,Desterro do Melo,Barbacena,5.9,4.8,False
+3121605,Diamantina,Teófilo Otoni,4.5,4.2,False
+3121704,Diogo de Vasconcelos,Juiz de Fora,4.9,4.5,False
+3121803,Dionísio,Ipatinga,4.85,4.7,False
+3121902,Divinésia,Juiz de Fora,4.9,4.5,False
+3122009,Divino,Juiz de Fora,4.3,4.5,True
+3122108,Divino das Laranjeiras,Governador Valadares,4.8,4.6,False
+3122207,Divinolândia de Minas,Governador Valadares,4.2,4.6,True
+3122306,Divinópolis,Divinópolis,4.7,4.7,False
+3122355,Divisa Alegre,Teófilo Otoni,4.1,4.2,True
+3122405,Divisa Nova,Varginha,4.6,4.5,False
+3122454,Divisópolis,Teófilo Otoni,4.5,4.2,False
+3122470,Dom Bosco,Patos de Minas,4.7,4.4,False
+3122504,Dom Cavati,Ipatinga,4.8,4.7,False
+3122603,Dom Joaquim,Governador Valadares,4.5,4.6,True
+3122702,Dom Silvério,Juiz de Fora,4.7,4.5,False
+3122801,Dom Viçoso,Pouso Alegre,3.4,4.8,True
+3122900,Dona Euzébia,Juiz de Fora,4.8,4.5,False
+3123007,Dores de Campos,Barbacena,4.9,4.8,False
+3123106,Dores de Guanhães,Governador Valadares,4.9,4.6,False
+3123205,Dores do Indaiá,Divinópolis,4.4,4.7,True
+3123304,Dores do Turvo,Juiz de Fora,4.8,4.5,False
+3123403,Doresópolis,Varginha,4.2,4.5,True
+3123502,Douradoquara,Uberlândia,4.8,4.6,False
+3123528,Durandé,Juiz de Fora,4.55,4.5,False
+3123601,Elói Mendes,Varginha,4.65,4.5,False
+3123700,Engenheiro Caldas,Governador Valadares,4.6,4.6,False
+3123809,Engenheiro Navarro,Montes Claros,3.8,4.2,True
+3123858,Entre Folhas,Ipatinga,5.9,4.7,False
+3123908,Entre Rios de Minas,Barbacena,4.8,4.8,False
+3124005,Ervália,Juiz de Fora,4.550000000000001,4.5,False
+3124104,Esmeraldas,Belo Horizonte,4.3,4.4,True
+3124203,Espera Feliz,Juiz de Fora,3.8499999999999996,4.5,True
+3124302,Espinosa,Montes Claros,4.25,4.2,False
+3124401,Espírito Santo do Dourado,Pouso Alegre,3.8,4.8,True
+3124500,Estiva,Pouso Alegre,4.6,4.8,True
+3124609,Estrela Dalva,Juiz de Fora,4.3,4.5,True
+3124708,Estrela do Indaiá,Divinópolis,4.7,4.7,False
+3124807,Estrela do Sul,Uberlândia,4.449999999999999,4.6,True
+3124906,Eugenópolis,Juiz de Fora,4.5,4.5,False
+3125002,Ewbank da Câmara,Juiz de Fora,4.5,4.5,False
+3125101,Extrema,Pouso Alegre,4.95,4.8,False
+3125200,Fama,Varginha,4.8,4.5,False
+3125309,Faria Lemos,Juiz de Fora,4.4,4.5,True
+3125408,Felício dos Santos,Teófilo Otoni,4.2,4.2,False
+3125507,São Gonçalo do Rio Preto,Teófilo Otoni,4.6,4.2,False
+3125606,Felisburgo,Teófilo Otoni,4.3,4.2,False
+3125705,Felixlândia,Belo Horizonte,4.5,4.4,False
+3125804,Fernandes Tourinho,Governador Valadares,4.6,4.6,False
+3125903,Ferros,Belo Horizonte,4.5,4.4,False
+3125952,Fervedouro,Juiz de Fora,4.5,4.5,False
+3126000,Florestal,Belo Horizonte,4.5,4.4,False
+3126109,Formiga,Divinópolis,4.95,4.7,False
+3126208,Formoso,Patos de Minas,4.4,4.4,False
+3126307,Fortaleza de Minas,Varginha,4.9,4.5,False
+3126406,Fortuna de Minas,Belo Horizonte,5.0,4.4,False
+3126505,Francisco Badaró,Teófilo Otoni,4.4,4.2,False
+3126604,Francisco Dumont,Montes Claros,3.9,4.2,True
+3126703,Francisco Sá,Montes Claros,3.85,4.2,True
+3126752,Franciscópolis,Teófilo Otoni,4.3,4.2,False
+3126802,Frei Gaspar,Teófilo Otoni,3.3,4.2,True
+3126901,Frei Inocêncio,Governador Valadares,3.85,4.6,True
+3126950,Frei Lagonegro,Governador Valadares,4.8,4.6,False
+3127008,Fronteira,Uberaba,4.2,4.5,True
+3127057,Fronteira dos Vales,Teófilo Otoni,3.8,4.2,True
+3127073,Fruta de Leite,Montes Claros,4.1,4.2,True
+3127107,Frutal,Uberaba,4.199999999999999,4.5,True
+3127206,Funilândia,Belo Horizonte,4.3,4.4,True
+3127305,Galiléia,Governador Valadares,4.0,4.6,True
+3127339,Gameleiras,Montes Claros,3.95,4.2,True
+3127354,Glaucilândia,Montes Claros,4.75,4.2,False
+3127370,Goiabeira,Governador Valadares,4.5,4.6,True
+3127388,Goianá,Juiz de Fora,4.7,4.5,False
+3127404,Gonçalves,Pouso Alegre,4.2,4.8,True
+3127503,Gonzaga,Governador Valadares,4.35,4.6,True
+3127602,Gouveia,Teófilo Otoni,4.4,4.2,False
+3127701,Governador Valadares,Governador Valadares,4.3,4.6,True
+3127800,Grão Mogol,Montes Claros,4.2,4.2,False
+3127909,Grupiara,Uberlândia,5.0,4.6,False
+3128006,Guanhães,Governador Valadares,4.699999999999999,4.6,False
+3128105,Guapé,Varginha,4.8,4.5,False
+3128204,Guaraciaba,Juiz de Fora,5.0,4.5,False
+3128253,Guaraciama,Montes Claros,4.5,4.2,False
+3128303,Guaranésia,Varginha,4.35,4.5,True
+3128501,Guarará,Juiz de Fora,4.7,4.5,False
+3128600,Guarda-Mor,Patos de Minas,4.3,4.4,True
+3128709,Guaxupé,Varginha,4.449999999999999,4.5,True
+3128808,Guidoval,Juiz de Fora,5.0,4.5,False
+3128907,Guimarânia,Patos de Minas,4.6,4.4,False
+3129004,Guiricema,Juiz de Fora,5.1,4.5,False
+3129103,Gurinhatã,Uberlândia,4.25,4.6,True
+3129202,Heliodora,Pouso Alegre,4.7,4.8,True
+3129301,Iapu,Ipatinga,4.8,4.7,False
+3129400,Ibertioga,Barbacena,5.0,4.8,False
+3129509,Ibiá,Uberaba,4.300000000000001,4.5,True
+3129608,Ibiaí,Montes Claros,4.0,4.2,True
+3129657,Ibiracatu,Montes Claros,4.449999999999999,4.2,False
+3129707,Ibiraci,Varginha,4.0,4.5,True
+3129806,Ibirité,Belo Horizonte,4.0,4.4,True
+3129905,Ibitiúra de Minas,Pouso Alegre,4.4,4.8,True
+3130002,Ibituruna,Varginha,2.9,4.5,True
+3130051,Icaraí de Minas,Montes Claros,3.8,4.2,True
+3130101,Igarapé,Belo Horizonte,4.4,4.4,False
+3130200,Igaratinga,Divinópolis,5.3,4.7,False
+3130309,Iguatama,Divinópolis,4.1,4.7,True
+3130408,Ijaci,Varginha,4.2,4.5,True
+3130507,Ilicínea,Varginha,4.7,4.5,False
+3130556,Imbé de Minas,Ipatinga,4.7,4.7,False
+3130606,Inconfidentes,Pouso Alegre,4.3,4.8,True
+3130655,Indaiabira,Montes Claros,4.8,4.2,False
+3130705,Indianópolis,Uberlândia,5.2,4.6,False
+3130804,Ingaí,Varginha,4.4,4.5,True
+3130903,Inhapim,Ipatinga,4.7,4.7,False
+3131000,Inhaúma,Belo Horizonte,4.5,4.4,False
+3131109,Inimutaba,Belo Horizonte,3.9,4.4,True
+3131158,Ipaba,Ipatinga,4.4,4.7,True
+3131208,Ipanema,Juiz de Fora,4.5,4.5,False
+3131307,Ipatinga,Ipatinga,4.7,4.7,False
+3131406,Ipiaçu,Uberlândia,4.5,4.6,True
+3131505,Ipuiúna,Pouso Alegre,4.8,4.8,False
+3131604,Iraí de Minas,Uberlândia,4.3,4.6,True
+3131703,Itabira,Belo Horizonte,4.6,4.4,False
+3131802,Itabirinha,Governador Valadares,4.95,4.6,False
+3131901,Itabirito,Belo Horizonte,5.0,4.4,False
+3132008,Itacambira,Montes Claros,4.5,4.2,False
+3132107,Itacarambi,Montes Claros,4.0,4.2,True
+3132206,Itaguara,Divinópolis,5.0,4.7,False
+3132305,Itaipé,Teófilo Otoni,4.2,4.2,False
+3132404,Itajubá,Pouso Alegre,4.85,4.8,False
+3132503,Itamarandiba,Teófilo Otoni,4.4,4.2,False
+3132602,Itamarati de Minas,Juiz de Fora,5.1,4.5,False
+3132701,Itambacuri,Teófilo Otoni,4.1,4.2,True
+3132800,Itambé do Mato Dentro,Belo Horizonte,4.9,4.4,False
+3132909,Itamogi,Varginha,4.3,4.5,True
+3133006,Itamonte,Pouso Alegre,4.6,4.8,True
+3133105,Itanhandu,Pouso Alegre,4.9,4.8,False
+3133204,Itanhomi,Governador Valadares,4.949999999999999,4.6,False
+3133303,Itaobim,Teófilo Otoni,4.05,4.2,True
+3133402,Itapagipe,Uberaba,4.8,4.5,False
+3133501,Itapecerica,Divinópolis,4.9,4.7,False
+3133600,Itapeva,Pouso Alegre,4.6,4.8,True
+3133709,Itatiaiuçu,Divinópolis,4.8,4.7,False
+3133758,Itaú de Minas,Varginha,4.5,4.5,False
+3133808,Itaúna,Divinópolis,4.7,4.7,False
+3133907,Itaverava,Barbacena,4.45,4.8,True
+3134004,Itinga,Teófilo Otoni,4.1,4.2,True
+3134103,Itueta,Governador Valadares,4.8,4.6,False
+3134202,Ituiutaba,Uberlândia,4.55,4.6,True
+3134301,Itumirim,Varginha,4.7,4.5,False
+3134400,Iturama,Uberaba,4.4,4.5,True
+3134509,Itutinga,Varginha,4.5,4.5,False
+3134608,Jaboticatubas,Belo Horizonte,4.6,4.4,False
+3134707,Jacinto,Teófilo Otoni,4.1,4.2,True
+3134806,Jacuí,Varginha,4.5,4.5,False
+3134905,Jacutinga,Pouso Alegre,4.6,4.8,True
+3135001,Jaguaraçu,Ipatinga,5.0,4.7,False
+3135050,Jaíba,Montes Claros,4.3,4.2,False
+3135076,Jampruca,Governador Valadares,3.5,4.6,True
+3135100,Janaúba,Montes Claros,4.15,4.2,True
+3135209,Januária,Montes Claros,4.0,4.2,True
+3135308,Japaraíba,Divinópolis,5.2,4.7,False
+3135357,Japonvar,Montes Claros,4.15,4.2,True
+3135407,Jeceaba,Barbacena,4.9,4.8,False
+3135456,Jenipapo de Minas,Teófilo Otoni,4.3,4.2,False
+3135506,Jequeri,Juiz de Fora,4.0,4.5,True
+3135605,Jequitaí,Montes Claros,4.3,4.2,False
+3135704,Jequitibá,Belo Horizonte,4.5,4.4,False
+3135803,Jequitinhonha,Teófilo Otoni,3.7,4.2,True
+3135902,Jesuânia,Pouso Alegre,5.3,4.8,False
+3136009,Joaíma,Teófilo Otoni,4.2,4.2,False
+3136108,Joanésia,Ipatinga,4.6,4.7,True
+3136207,João Monlevade,Ipatinga,4.6,4.7,True
+3136306,João Pinheiro,Patos de Minas,4.1,4.4,True
+3136405,Joaquim Felício,Montes Claros,4.9,4.2,False
+3136504,Jordânia,Teófilo Otoni,3.7,4.2,True
+3136520,José Gonçalves de Minas,Teófilo Otoni,4.7,4.2,False
+3136553,José Raydan,Governador Valadares,4.65,4.6,False
+3136579,Josenópolis,Montes Claros,4.2,4.2,False
+3136603,Nova União,Belo Horizonte,4.65,4.4,False
+3136652,Juatuba,Belo Horizonte,4.1,4.4,True
+3136702,Juiz de Fora,Juiz de Fora,4.2,4.5,True
+3136801,Juramento,Montes Claros,4.2,4.2,False
+3136900,Juruaia,Varginha,5.1,4.5,False
+3136959,Juvenília,Montes Claros,4.6,4.2,False
+3137007,Ladainha,Teófilo Otoni,3.9,4.2,True
+3137106,Lagamar,Patos de Minas,4.9,4.4,False
+3137205,Lagoa da Prata,Divinópolis,4.9,4.7,False
+3137304,Lagoa dos Patos,Montes Claros,4.3,4.2,False
+3137403,Lagoa Dourada,Barbacena,5.5,4.8,False
+3137502,Lagoa Formosa,Patos de Minas,4.949999999999999,4.4,False
+3137536,Lagoa Grande,Patos de Minas,4.8,4.4,False
+3137601,Lagoa Santa,Belo Horizonte,4.449999999999999,4.4,False
+3137700,Lajinha,Juiz de Fora,4.6,4.5,False
+3137809,Lambari,Pouso Alegre,5.0,4.8,False
+3137908,Lamim,Barbacena,4.7,4.8,True
+3138005,Laranjal,Juiz de Fora,4.8,4.5,False
+3138104,Lassance,Montes Claros,3.8,4.2,True
+3138203,Lavras,Varginha,4.5,4.5,False
+3138302,Leandro Ferreira,Divinópolis,4.2,4.7,True
+3138351,Leme do Prado,Teófilo Otoni,5.3,4.2,False
+3138401,Leopoldina,Juiz de Fora,4.45,4.5,True
+3138500,Liberdade,Juiz de Fora,4.6,4.5,False
+3138609,Lima Duarte,Juiz de Fora,4.7,4.5,False
+3138625,Limeira do Oeste,Uberaba,4.2,4.5,True
+3138658,Lontra,Montes Claros,4.5,4.2,False
+3138674,Luisburgo,Juiz de Fora,4.6,4.5,False
+3138682,Luislândia,Montes Claros,3.8,4.2,True
+3138708,Luminárias,Varginha,5.1,4.5,False
+3138807,Luz,Divinópolis,4.2,4.7,True
+3138906,Machacalis,Teófilo Otoni,4.1,4.2,True
+3139003,Machado,Varginha,4.55,4.5,False
+3139102,Madre de Deus de Minas,Barbacena,4.9,4.8,False
+3139201,Malacacheta,Teófilo Otoni,4.6,4.2,False
+3139250,Mamonas,Montes Claros,4.1,4.2,True
+3139300,Manga,Montes Claros,3.9499999999999997,4.2,True
+3139409,Manhuaçu,Juiz de Fora,4.4,4.5,True
+3139508,Manhumirim,Juiz de Fora,4.8,4.5,False
+3139607,Mantena,Governador Valadares,4.8,4.6,False
+3139706,Maravilhas,Divinópolis,4.6,4.7,True
+3139805,Mar de Espanha,Juiz de Fora,4.5,4.5,False
+3139904,Maria da Fé,Pouso Alegre,4.75,4.8,True
+3140001,Mariana,Belo Horizonte,4.6,4.4,False
+3140100,Marilac,Governador Valadares,5.1,4.6,False
+3140159,Mário Campos,Belo Horizonte,4.15,4.4,True
+3140209,Maripá de Minas,Juiz de Fora,5.0,4.5,False
+3140308,Marliéria,Ipatinga,4.7,4.7,False
+3140407,Marmelópolis,Pouso Alegre,5.3,4.8,False
+3140506,Martinho Campos,Divinópolis,4.9,4.7,False
+3140530,Martins Soares,Juiz de Fora,4.6,4.5,False
+3140555,Mata Verde,Teófilo Otoni,4.7,4.2,False
+3140605,Materlândia,Governador Valadares,4.2,4.6,True
+3140704,Mateus Leme,Belo Horizonte,4.35,4.4,True
+3140803,Matias Barbosa,Juiz de Fora,4.6,4.5,False
+3140852,Matias Cardoso,Montes Claros,4.0,4.2,True
+3140902,Matipó,Juiz de Fora,4.1,4.5,True
+3141009,Mato Verde,Montes Claros,4.4,4.2,False
+3141108,Matozinhos,Belo Horizonte,4.5,4.4,False
+3141207,Matutina,Patos de Minas,4.4,4.4,False
+3141306,Medeiros,Divinópolis,4.3,4.7,True
+3141405,Medina,Teófilo Otoni,4.1,4.2,True
+3141504,Mendes Pimentel,Governador Valadares,4.5,4.6,True
+3141603,Mercês,Juiz de Fora,4.4,4.5,True
+3141702,Mesquita,Ipatinga,4.8,4.7,False
+3141801,Minas Novas,Teófilo Otoni,4.85,4.2,False
+3141900,Minduri,Pouso Alegre,4.9,4.8,False
+3142007,Mirabela,Montes Claros,3.95,4.2,True
+3142106,Miradouro,Juiz de Fora,4.8,4.5,False
+3142205,Miraí,Juiz de Fora,4.6,4.5,False
+3142254,Miravânia,Montes Claros,3.9,4.2,True
+3142304,Moeda,Belo Horizonte,4.6,4.4,False
+3142403,Moema,Divinópolis,4.4,4.7,True
+3142502,Monjolos,Belo Horizonte,4.4,4.4,False
+3142601,Monsenhor Paulo,Varginha,4.3,4.5,True
+3142700,Montalvânia,Montes Claros,4.45,4.2,False
+3142809,Monte Alegre de Minas,Uberlândia,4.1,4.6,True
+3142908,Monte Azul,Montes Claros,4.3,4.2,False
+3143005,Monte Belo,Varginha,4.7,4.5,False
+3143104,Monte Carmelo,Uberlândia,4.8,4.6,False
+3143153,Monte Formoso,Teófilo Otoni,4.0,4.2,True
+3143203,Monte Santo de Minas,Varginha,4.7,4.5,False
+3143302,Montes Claros,Montes Claros,4.4,4.2,False
+3143401,Monte Sião,Pouso Alegre,4.9,4.8,False
+3143450,Montezuma,Montes Claros,5.1,4.2,False
+3143500,Morada Nova de Minas,Divinópolis,4.9,4.7,False
+3143609,Morro da Garça,Belo Horizonte,4.7,4.4,False
+3143708,Morro do Pilar,Belo Horizonte,4.2,4.4,True
+3143807,Munhoz,Pouso Alegre,5.0,4.8,False
+3143906,Muriaé,Juiz de Fora,4.6,4.5,False
+3144003,Mutum,Juiz de Fora,4.85,4.5,False
+3144102,Muzambinho,Varginha,4.6,4.5,False
+3144201,Nacip Raydan,Governador Valadares,5.0,4.6,False
+3144300,Nanuque,Teófilo Otoni,4.1,4.2,True
+3144359,Naque,Ipatinga,4.0,4.7,True
+3144375,Natalândia,Patos de Minas,4.1,4.4,True
+3144409,Natércia,Pouso Alegre,5.0,4.8,False
+3144508,Nazareno,Barbacena,4.6,4.8,True
+3144607,Nepomuceno,Varginha,4.15,4.5,True
+3144656,Ninheira,Montes Claros,4.4,4.2,False
+3144672,Nova Belém,Governador Valadares,4.5,4.6,True
+3144706,Nova Era,Ipatinga,4.2,4.7,True
+3144805,Nova Lima,Belo Horizonte,4.5,4.4,False
+3144904,Nova Módica,Teófilo Otoni,4.1,4.2,True
+3145000,Nova Ponte,Uberaba,5.0,4.5,False
+3145059,Nova Porteirinha,Montes Claros,4.199999999999999,4.2,True
+3145109,Nova Resende,Varginha,4.95,4.5,False
+3145208,Nova Serrana,Divinópolis,4.4,4.7,True
+3145307,Novo Cruzeiro,Teófilo Otoni,4.2,4.2,False
+3145356,Novo Oriente de Minas,Teófilo Otoni,4.65,4.2,False
+3145372,Novorizonte,Montes Claros,4.5,4.2,False
+3145406,Olaria,Juiz de Fora,4.7,4.5,False
+3145455,Olhos-d'Água,Montes Claros,3.7,4.2,True
+3145505,Olímpio Noronha,Pouso Alegre,5.7,4.8,False
+3145604,Oliveira,Divinópolis,4.4,4.7,True
+3145802,Onça de Pitangui,Divinópolis,4.3,4.7,True
+3145851,Oratórios,Juiz de Fora,4.3,4.5,True
+3145877,Orizânia,Juiz de Fora,3.9,4.5,True
+3145901,Ouro Branco,Barbacena,4.7,4.8,True
+3146008,Ouro Fino,Pouso Alegre,4.65,4.8,True
+3146107,Ouro Preto,Belo Horizonte,4.7,4.4,False
+3146206,Ouro Verde de Minas,Teófilo Otoni,4.3,4.2,False
+3146255,Padre Carvalho,Montes Claros,4.1,4.2,True
+3146305,Padre Paraíso,Teófilo Otoni,4.1,4.2,True
+3146404,Paineiras,Divinópolis,5.1,4.7,False
+3146503,Pains,Divinópolis,4.3,4.7,True
+3146552,Pai Pedro,Montes Claros,4.5,4.2,False
+3146602,Paiva,Juiz de Fora,4.9,4.5,False
+3146701,Palma,Juiz de Fora,4.6,4.5,False
+3146750,Palmópolis,Teófilo Otoni,3.75,4.2,True
+3146909,Papagaios,Divinópolis,4.1,4.7,True
+3147006,Paracatu,Patos de Minas,3.9,4.4,True
+3147105,Pará de Minas,Divinópolis,4.9,4.7,False
+3147204,Paraguaçu,Varginha,4.1,4.5,True
+3147303,Paraisópolis,Pouso Alegre,4.55,4.8,True
+3147402,Paraopeba,Belo Horizonte,4.35,4.4,True
+3147501,Passabém,Belo Horizonte,4.3,4.4,True
+3147600,Passa Quatro,Pouso Alegre,4.6,4.8,True
+3147709,Passa Tempo,Divinópolis,4.7,4.7,False
+3147808,Passa Vinte,Juiz de Fora,5.2,4.5,False
+3147907,Passos,Varginha,4.5,4.5,False
+3147956,Patis,Montes Claros,4.5,4.2,False
+3148004,Patos de Minas,Patos de Minas,5.0,4.4,False
+3148103,Patrocínio,Patos de Minas,4.55,4.4,False
+3148202,Patrocínio do Muriaé,Juiz de Fora,4.1,4.5,True
+3148301,Paula Cândido,Juiz de Fora,4.3,4.5,True
+3148400,Paulistas,Governador Valadares,4.4,4.6,True
+3148509,Pavão,Teófilo Otoni,3.6500000000000004,4.2,True
+3148608,Peçanha,Governador Valadares,4.2,4.6,True
+3148707,Pedra Azul,Teófilo Otoni,4.0,4.2,True
+3148756,Pedra Bonita,Juiz de Fora,4.1,4.5,True
+3148806,Pedra do Anta,Juiz de Fora,5.5,4.5,False
+3148905,Pedra do Indaiá,Divinópolis,5.0,4.7,False
+3149002,Pedra Dourada,Juiz de Fora,5.3,4.5,False
+3149101,Pedralva,Pouso Alegre,4.9,4.8,False
+3149150,Pedras de Maria da Cruz,Montes Claros,4.0,4.2,True
+3149200,Pedrinópolis,Uberaba,5.3,4.5,False
+3149309,Pedro Leopoldo,Belo Horizonte,4.2,4.4,True
+3149408,Pedro Teixeira,Juiz de Fora,6.2,4.5,False
+3149507,Pequeri,Juiz de Fora,4.6,4.5,False
+3149606,Pequi,Divinópolis,4.5,4.7,True
+3149705,Perdigão,Divinópolis,4.4,4.7,True
+3149804,Perdizes,Uberaba,4.5,4.5,False
+3149903,Perdões,Varginha,4.5,4.5,False
+3149952,Periquito,Ipatinga,3.7,4.7,True
+3150000,Pescador,Teófilo Otoni,3.9,4.2,True
+3150109,Piau,Juiz de Fora,5.0,4.5,False
+3150158,Piedade de Caratinga,Ipatinga,4.6,4.7,True
+3150208,Piedade de Ponte Nova,Juiz de Fora,4.4,4.5,True
+3150307,Piedade do Rio Grande,Barbacena,4.2,4.8,True
+3150406,Piedade dos Gerais,Divinópolis,5.3,4.7,False
+3150505,Pimenta,Divinópolis,4.4,4.7,True
+3150539,Pingo-d'Água,Ipatinga,5.3,4.7,False
+3150570,Pintópolis,Montes Claros,4.3,4.2,False
+3150604,Piracema,Divinópolis,4.7,4.7,False
+3150703,Pirajuba,Uberaba,4.6,4.5,False
+3150802,Piranga,Barbacena,4.6,4.8,True
+3150901,Piranguçu,Pouso Alegre,5.3,4.8,False
+3151008,Piranguinho,Pouso Alegre,4.5,4.8,True
+3151107,Pirapetinga,Juiz de Fora,4.5,4.5,False
+3151206,Pirapora,Montes Claros,4.2,4.2,False
+3151305,Piraúba,Juiz de Fora,4.9,4.5,False
+3151404,Pitangui,Divinópolis,4.5,4.7,True
+3151503,Piumhi,Varginha,4.300000000000001,4.5,True
+3151602,Planura,Uberaba,3.8,4.5,True
+3151701,Poço Fundo,Varginha,4.8,4.5,False
+3151800,Poços de Caldas,Pouso Alegre,4.85,4.8,False
+3151909,Pocrane,Juiz de Fora,4.5,4.5,False
+3152006,Pompéu,Divinópolis,4.1,4.7,True
+3152105,Ponte Nova,Juiz de Fora,4.4,4.5,True
+3152131,Ponto Chique,Montes Claros,4.5,4.2,False
+3152170,Ponto dos Volantes,Teófilo Otoni,4.0,4.2,True
+3152204,Porteirinha,Montes Claros,4.35,4.2,False
+3152303,Porto Firme,Juiz de Fora,4.9,4.5,False
+3152402,Poté,Teófilo Otoni,4.05,4.2,True
+3152501,Pouso Alegre,Pouso Alegre,4.6,4.8,True
+3152600,Pouso Alto,Pouso Alegre,4.7,4.8,True
+3152709,Prados,Barbacena,5.5,4.8,False
+3152808,Prata,Uberlândia,4.3,4.6,True
+3152907,Pratápolis,Varginha,4.4,4.5,True
+3153004,Pratinha,Uberaba,4.5,4.5,False
+3153103,Presidente Bernardes,Juiz de Fora,4.6,4.5,False
+3153202,Presidente Juscelino,Belo Horizonte,4.2,4.4,True
+3153301,Presidente Kubitschek,Teófilo Otoni,4.1,4.2,True
+3153400,Presidente Olegário,Patos de Minas,4.7,4.4,False
+3153509,Alto Jequitibá,Juiz de Fora,4.550000000000001,4.5,False
+3153608,Prudente de Morais,Belo Horizonte,4.4,4.4,False
+3153707,Quartel Geral,Divinópolis,4.5,4.7,True
+3153806,Queluzito,Barbacena,4.9,4.8,False
+3153905,Raposos,Belo Horizonte,4.7,4.4,False
+3154002,Raul Soares,Ipatinga,4.8,4.7,False
+3154101,Recreio,Juiz de Fora,4.4,4.5,True
+3154150,Reduto,Juiz de Fora,4.5,4.5,False
+3154200,Resende Costa,Barbacena,4.6,4.8,True
+3154309,Resplendor,Governador Valadares,4.15,4.6,True
+3154408,Ressaquinha,Barbacena,5.2,4.8,False
+3154457,Riachinho,Patos de Minas,4.15,4.4,True
+3154507,Riacho dos Machados,Montes Claros,3.7,4.2,True
+3154606,Ribeirão das Neves,Belo Horizonte,4.1,4.4,True
+3154705,Ribeirão Vermelho,Varginha,4.3,4.5,True
+3154804,Rio Acima,Belo Horizonte,4.2,4.4,True
+3154903,Rio Casca,Juiz de Fora,4.4,4.5,True
+3155009,Rio Doce,Juiz de Fora,3.8,4.5,True
+3155108,Rio do Prado,Teófilo Otoni,4.6,4.2,False
+3155207,Rio Espera,Barbacena,4.4,4.8,True
+3155306,Rio Manso,Divinópolis,4.7,4.7,False
+3155405,Rio Novo,Juiz de Fora,4.0,4.5,True
+3155504,Rio Paranaíba,Patos de Minas,4.8,4.4,False
+3155603,Rio Pardo de Minas,Montes Claros,4.75,4.2,False
+3155702,Rio Piracicaba,Ipatinga,5.3,4.7,False
+3155801,Rio Pomba,Juiz de Fora,4.1,4.5,True
+3155900,Rio Preto,Juiz de Fora,5.0,4.5,False
+3156007,Rio Vermelho,Governador Valadares,4.4,4.6,True
+3156106,Ritápolis,Barbacena,5.2,4.8,False
+3156205,Rochedo de Minas,Juiz de Fora,6.3,4.5,False
+3156304,Rodeiro,Juiz de Fora,4.9,4.5,False
+3156403,Romaria,Uberlândia,4.4,4.6,True
+3156452,Rosário da Limeira,Juiz de Fora,5.0,4.5,False
+3156502,Rubelita,Montes Claros,4.2,4.2,False
+3156601,Rubim,Teófilo Otoni,3.9,4.2,True
+3156700,Sabará,Belo Horizonte,4.4,4.4,False
+3156809,Sabinópolis,Governador Valadares,4.2,4.6,True
+3156908,Sacramento,Uberaba,4.7,4.5,False
+3157005,Salinas,Montes Claros,4.3,4.2,False
+3157104,Salto da Divisa,Teófilo Otoni,3.9,4.2,True
+3157203,Santa Bárbara,Belo Horizonte,4.8,4.4,False
+3157252,Santa Bárbara do Leste,Ipatinga,5.1,4.7,False
+3157278,Santa Bárbara do Monte Verde,Juiz de Fora,6.1,4.5,False
+3157302,Santa Bárbara do Tugúrio,Barbacena,4.7,4.8,True
+3157336,Santa Cruz de Minas,Barbacena,4.5,4.8,True
+3157377,Santa Cruz de Salinas,Montes Claros,4.35,4.2,False
+3157401,Santa Cruz do Escalvado,Juiz de Fora,4.8,4.5,False
+3157500,Santa Efigênia de Minas,Governador Valadares,4.7,4.6,False
+3157609,Santa Fé de Minas,Montes Claros,4.0,4.2,True
+3157658,Santa Helena de Minas,Teófilo Otoni,4.4,4.2,False
+3157708,Santa Juliana,Uberaba,4.2,4.5,True
+3157807,Santa Luzia,Belo Horizonte,4.1,4.4,True
+3157906,Santa Margarida,Juiz de Fora,4.65,4.5,False
+3158003,Santa Maria de Itabira,Belo Horizonte,4.199999999999999,4.4,True
+3158102,Santa Maria do Salto,Teófilo Otoni,3.9,4.2,True
+3158201,Santa Maria do Suaçuí,Governador Valadares,4.6,4.6,False
+3158300,Santana da Vargem,Varginha,4.8,4.5,False
+3158409,Santana de Cataguases,Juiz de Fora,4.2,4.5,True
+3158508,Santana de Pirapama,Belo Horizonte,4.9,4.4,False
+3158607,Santana do Deserto,Juiz de Fora,5.0,4.5,False
+3158706,Santana do Garambéu,Barbacena,4.0,4.8,True
+3158805,Santana do Jacaré,Varginha,4.7,4.5,False
+3158904,Santana do Manhuaçu,Juiz de Fora,4.05,4.5,True
+3158953,Santana do Paraíso,Ipatinga,4.7,4.7,False
+3159001,Santana do Riacho,Belo Horizonte,4.3,4.4,True
+3159100,Santana dos Montes,Barbacena,4.2,4.8,True
+3159209,Santa Rita de Caldas,Pouso Alegre,5.3,4.8,False
+3159308,Santa Rita de Jacutinga,Juiz de Fora,4.7,4.5,False
+3159357,Santa Rita de Minas,Ipatinga,5.1,4.7,False
+3159407,Santa Rita de Ibitipoca,Barbacena,4.3,4.8,True
+3159506,Santa Rita do Itueto,Governador Valadares,4.449999999999999,4.6,True
+3159605,Santa Rita do Sapucaí,Pouso Alegre,4.7,4.8,True
+3159704,Santa Rosa da Serra,Uberaba,5.0,4.5,False
+3159803,Santa Vitória,Uberlândia,4.1,4.6,True
+3159902,Santo Antônio do Amparo,Varginha,4.0,4.5,True
+3160009,Santo Antônio do Aventureiro,Juiz de Fora,4.7,4.5,False
+3160108,Santo Antônio do Grama,Juiz de Fora,5.1,4.5,False
+3160207,Santo Antônio do Itambé,Teófilo Otoni,3.8,4.2,True
+3160306,Santo Antônio do Jacinto,Teófilo Otoni,4.2,4.2,False
+3160405,Santo Antônio do Monte,Divinópolis,4.6,4.7,True
+3160454,Santo Antônio do Retiro,Montes Claros,4.6,4.2,False
+3160504,Santo Antônio do Rio Abaixo,Belo Horizonte,5.9,4.4,False
+3160603,Santo Hipólito,Belo Horizonte,4.5,4.4,False
+3160702,Santos Dumont,Juiz de Fora,4.2,4.5,True
+3160801,São Bento Abade,Varginha,4.5,4.5,False
+3160900,São Brás do Suaçuí,Barbacena,5.1,4.8,False
+3160959,São Domingos das Dores,Ipatinga,5.0,4.7,False
+3161007,São Domingos do Prata,Ipatinga,4.3,4.7,True
+3161056,São Félix de Minas,Governador Valadares,4.3,4.6,True
+3161106,São Francisco,Montes Claros,4.1,4.2,True
+3161205,São Francisco de Paula,Divinópolis,5.0,4.7,False
+3161304,São Francisco de Sales,Uberaba,4.5,4.5,False
+3161403,São Francisco do Glória,Juiz de Fora,4.9,4.5,False
+3161502,São Geraldo,Juiz de Fora,4.6,4.5,False
+3161601,São Geraldo da Piedade,Governador Valadares,4.6,4.6,False
+3161650,São Geraldo do Baixio,Governador Valadares,4.2,4.6,True
+3161700,São Gonçalo do Abaeté,Patos de Minas,4.4,4.4,False
+3161809,São Gonçalo do Pará,Divinópolis,4.5,4.7,True
+3161908,São Gonçalo do Rio Abaixo,Ipatinga,5.1,4.7,False
+3162005,São Gonçalo do Sapucaí,Varginha,4.55,4.5,False
+3162104,São Gotardo,Patos de Minas,4.2,4.4,True
+3162203,São João Batista do Glória,Varginha,4.3,4.5,True
+3162252,São João da Lagoa,Montes Claros,4.3,4.2,False
+3162302,São João da Mata,Pouso Alegre,5.3,4.8,False
+3162401,São João da Ponte,Montes Claros,4.2,4.2,False
+3162450,São João das Missões,Montes Claros,4.3,4.2,False
+3162500,São João del Rei,Barbacena,5.2,4.8,False
+3162559,São João do Manhuaçu,Juiz de Fora,4.3,4.5,True
+3162575,São João do Manteninha,Governador Valadares,4.9,4.6,False
+3162609,São João do Oriente,Ipatinga,4.5,4.7,True
+3162658,São João do Pacuí,Montes Claros,4.5,4.2,False
+3162708,São João do Paraíso,Montes Claros,4.7,4.2,False
+3162807,São João Evangelista,Governador Valadares,4.1,4.6,True
+3162906,São João Nepomuceno,Juiz de Fora,4.55,4.5,False
+3162922,São Joaquim de Bicas,Belo Horizonte,4.65,4.4,False
+3162948,São José da Barra,Varginha,4.45,4.5,True
+3162955,São José da Lapa,Belo Horizonte,4.949999999999999,4.4,False
+3163003,São José da Safira,Governador Valadares,5.0,4.6,False
+3163102,São José da Varginha,Divinópolis,3.9,4.7,True
+3163201,São José do Alegre,Pouso Alegre,5.1,4.8,False
+3163300,São José do Divino,Teófilo Otoni,4.8,4.2,False
+3163409,São José do Goiabal,Ipatinga,5.0,4.7,False
+3163508,São José do Jacuri,Governador Valadares,4.45,4.6,True
+3163607,São José do Mantimento,Juiz de Fora,4.4,4.5,True
+3163706,São Lourenço,Pouso Alegre,4.55,4.8,True
+3163805,São Miguel do Anta,Juiz de Fora,4.65,4.5,False
+3163904,São Pedro da União,Varginha,4.4,4.5,True
+3164001,São Pedro dos Ferros,Juiz de Fora,4.1,4.5,True
+3164100,São Pedro do Suaçuí,Governador Valadares,4.4,4.6,True
+3164209,São Romão,Montes Claros,4.3,4.2,False
+3164308,São Roque de Minas,Varginha,4.3,4.5,True
+3164407,São Sebastião da Bela Vista,Pouso Alegre,4.1,4.8,True
+3164431,São Sebastião da Vargem Alegre,Juiz de Fora,4.7,4.5,False
+3164472,São Sebastião do Anta,Ipatinga,4.6,4.7,True
+3164506,São Sebastião do Maranhão,Governador Valadares,4.45,4.6,True
+3164605,São Sebastião do Oeste,Divinópolis,4.5,4.7,True
+3164704,São Sebastião do Paraíso,Varginha,4.55,4.5,False
+3164803,São Sebastião do Rio Preto,Belo Horizonte,5.1,4.4,False
+3164902,São Sebastião do Rio Verde,Pouso Alegre,6.6,4.8,False
+3165008,São Tiago,Barbacena,4.05,4.8,True
+3165107,São Tomás de Aquino,Varginha,4.6,4.5,False
+3165206,São Tomé das Letras,Varginha,4.45,4.5,True
+3165404,Sapucaí-Mirim,Pouso Alegre,4.1,4.8,True
+3165503,Sardoá,Governador Valadares,4.9,4.6,False
+3165537,Sarzedo,Belo Horizonte,4.6,4.4,False
+3165552,Setubinha,Teófilo Otoni,4.2,4.2,False
+3165560,Sem-Peixe,Juiz de Fora,5.4,4.5,False
+3165578,Senador Amaral,Pouso Alegre,4.5,4.8,True
+3165602,Senador Cortes,Juiz de Fora,3.6,4.5,True
+3165701,Senador Firmino,Juiz de Fora,5.3,4.5,False
+3165800,Senador José Bento,Pouso Alegre,4.6,4.8,True
+3165909,Senador Modestino Gonçalves,Teófilo Otoni,3.7,4.2,True
+3166006,Senhora de Oliveira,Barbacena,5.0,4.8,False
+3166105,Senhora do Porto,Governador Valadares,4.4,4.6,True
+3166204,Senhora dos Remédios,Barbacena,4.4,4.8,True
+3166303,Sericita,Juiz de Fora,4.7,4.5,False
+3166402,Seritinga,Pouso Alegre,5.0,4.8,False
+3166709,Serra dos Aimorés,Teófilo Otoni,3.75,4.2,True
+3166808,Serra do Salitre,Patos de Minas,4.4,4.4,False
+3166907,Serrania,Varginha,4.4,4.5,True
+3166956,Serranópolis de Minas,Montes Claros,4.6,4.2,False
+3167004,Serranos,Pouso Alegre,4.6,4.8,True
+3167103,Serro,Teófilo Otoni,4.2,4.2,False
+3167202,Sete Lagoas,Belo Horizonte,4.6,4.4,False
+3167301,Silveirânia,Juiz de Fora,5.6,4.5,False
+3167400,Silvianópolis,Pouso Alegre,4.3,4.8,True
+3167509,Simão Pereira,Juiz de Fora,3.6,4.5,True
+3167608,Simonésia,Juiz de Fora,4.3,4.5,True
+3167806,Soledade de Minas,Pouso Alegre,4.5,4.8,True
+3167905,Tabuleiro,Juiz de Fora,4.0,4.5,True
+3168002,Taiobeiras,Montes Claros,4.75,4.2,False
+3168051,Taparuba,Juiz de Fora,5.0,4.5,False
+3168101,Tapira,Uberaba,4.9,4.5,False
+3168200,Tapiraí,Divinópolis,5.0,4.7,False
+3168309,Taquaraçu de Minas,Belo Horizonte,4.1,4.4,True
+3168408,Tarumirim,Governador Valadares,4.699999999999999,4.6,False
+3168507,Teixeiras,Juiz de Fora,4.8,4.5,False
+3168606,Teófilo Otoni,Teófilo Otoni,4.0,4.2,True
+3168705,Timóteo,Ipatinga,4.65,4.7,True
+3168804,Tiradentes,Barbacena,4.5,4.8,True
+3168903,Tiros,Patos de Minas,4.5,4.4,False
+3169000,Tocantins,Juiz de Fora,4.0,4.5,True
+3169059,Tocos do Moji,Pouso Alegre,5.9,4.8,False
+3169109,Toledo,Pouso Alegre,4.8,4.8,False
+3169208,Tombos,Juiz de Fora,4.5,4.5,False
+3169307,Três Corações,Varginha,4.15,4.5,True
+3169356,Três Marias,Belo Horizonte,4.3,4.4,True
+3169406,Três Pontas,Varginha,4.25,4.5,True
+3169505,Tumiritinga,Governador Valadares,4.7,4.6,False
+3169604,Tupaciguara,Uberlândia,4.9,4.6,False
+3169703,Turmalina,Teófilo Otoni,4.9,4.2,False
+3169802,Turvolândia,Pouso Alegre,4.8,4.8,False
+3169901,Ubá,Juiz de Fora,4.5,4.5,False
+3170008,Ubaí,Montes Claros,3.9,4.2,True
+3170057,Ubaporanga,Ipatinga,4.5,4.7,True
+3170107,Uberaba,Uberaba,4.4,4.5,True
+3170206,Uberlândia,Uberlândia,4.6,4.6,False
+3170305,Umburatiba,Teófilo Otoni,4.0,4.2,True
+3170404,Unaí,Patos de Minas,4.3,4.4,True
+3170438,União de Minas,Uberaba,4.3,4.5,True
+3170479,Uruana de Minas,Patos de Minas,4.3,4.4,True
+3170503,Urucânia,Juiz de Fora,4.4,4.5,True
+3170529,Urucuia,Patos de Minas,4.2,4.4,True
+3170578,Vargem Alegre,Ipatinga,4.9,4.7,False
+3170602,Vargem Bonita,Varginha,4.5,4.5,False
+3170651,Vargem Grande do Rio Pardo,Montes Claros,4.5,4.2,False
+3170701,Varginha,Varginha,4.5,4.5,False
+3170750,Varjão de Minas,Patos de Minas,4.3,4.4,True
+3170800,Várzea da Palma,Montes Claros,3.9,4.2,True
+3170909,Varzelândia,Montes Claros,3.8,4.2,True
+3171006,Vazante,Patos de Minas,4.5,4.4,False
+3171030,Verdelândia,Montes Claros,3.8,4.2,True
+3171071,Veredinha,Teófilo Otoni,5.15,4.2,False
+3171105,Veríssimo,Uberaba,5.4,4.5,False
+3171154,Vermelho Novo,Ipatinga,4.6,4.7,True
+3171204,Vespasiano,Belo Horizonte,4.2,4.4,True
+3171303,Viçosa,Juiz de Fora,4.7,4.5,False
+3171402,Vieiras,Juiz de Fora,5.1,4.5,False
+3171501,Mathias Lobato,Governador Valadares,3.8,4.6,True
+3171600,Virgem da Lapa,Teófilo Otoni,4.3,4.2,False
+3171709,Virgínia,Pouso Alegre,4.6,4.8,True
+3171808,Virginópolis,Governador Valadares,4.7,4.6,False
+3171907,Virgolândia,Governador Valadares,4.9,4.6,False
+3172004,Visconde do Rio Branco,Juiz de Fora,4.25,4.5,True
+3172103,Volta Grande,Juiz de Fora,4.0,4.5,True
+3172202,Wenceslau Braz,Pouso Alegre,5.1,4.8,False
