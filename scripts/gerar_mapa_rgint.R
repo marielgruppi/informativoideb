@@ -2,15 +2,21 @@
 # RGInt, com grid de municípios e hachura nos municípios abaixo da mediana da
 # sua RGInt.
 #
+# Este script é autocontido: os dados de entrada são lidos diretamente do
+# GitHub (raw.githubusercontent.com), então não é preciso clonar o repositório
+# nem rodar a partir de uma pasta específica — só baixar este arquivo .R e
+# rodar. Se quiser usar dados locais mais recentes em vez do que está no
+# GitHub, troque as 3 linhas `read_csv(RAW_BASE, ...)` /
+# `readLines(RAW_BASE, ...)` abaixo por caminhos locais
+# (analise/mapa_rgint/...).
+#
 # Como rodar:
-#   1. Rode `python3 scripts/gerar_graficos.py` antes (ou use os CSVs já
-#      commitados em analise/mapa_rgint/) para garantir dados atualizados.
-#   2. install.packages(c("geobr", "sf", "ggplot2", "dplyr", "readr", "ggpattern"))
+#   1. install.packages(c("geobr", "sf", "ggplot2", "dplyr", "readr", "ggpattern"))
 #      (ggpattern é opcional — sem ele o script cai num fallback com contorno
 #      tracejado no lugar da hachura de fato)
-#   3. Rscript scripts/gerar_mapa_rgint.R
+#   2. Rscript gerar_mapa_rgint.R  (ou "Source" no RStudio)
 #
-# Saída: analise/graficos/grafico_14.png
+# Saída: grafico_14.png, salvo na pasta de trabalho atual do R (getwd()).
 #
 # geobr baixa a malha municipal do IBGE/IPEA na primeira execução (precisa de
 # internet); em execuções seguintes ele usa o cache local.
@@ -21,9 +27,11 @@ library(ggplot2)
 library(dplyr)
 library(readr)
 
-rgint_med <- read_csv("analise/mapa_rgint/mediana_rgint.csv", show_col_types = FALSE)
-mun_med   <- read_csv("analise/mapa_rgint/mediana_municipio.csv", show_col_types = FALSE)
-mg_ideb   <- as.numeric(readLines("analise/mapa_rgint/mg_ideb.txt"))
+RAW_BASE <- "https://raw.githubusercontent.com/marielgruppi/informativoideb/claude/ideb-2025-informativo-g86l9l/analise/mapa_rgint/"
+
+rgint_med <- read_csv(paste0(RAW_BASE, "mediana_rgint.csv"), show_col_types = FALSE)
+mun_med   <- read_csv(paste0(RAW_BASE, "mediana_municipio.csv"), show_col_types = FALSE)
+mg_ideb   <- as.numeric(readLines(paste0(RAW_BASE, "mg_ideb.txt")))
 
 # Malha dos municípios de MG (código UF 31)
 mun_sf <- read_municipality(code_muni = "MG", year = 2020, simplified = TRUE)
