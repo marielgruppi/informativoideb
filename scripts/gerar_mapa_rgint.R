@@ -95,5 +95,11 @@ if (requireNamespace("ggpattern", quietly = TRUE)) {
          subtitle = sub("Hachurado", "Contorno tracejado", subtitulo))
 }
 
+# Nome de cada RGInt no centroide da sua área dissolvida.
+mapa <- mapa + geom_sf_text(
+  data = mun_sf %>% group_by(RGINT) %>% summarise(geometry = st_union(geometry), .groups = "drop") %>% st_centroid(),
+  aes(label = RGINT), size = 2.6, color = "black", fontface = "bold", check_overlap = TRUE
+)
+
 ggsave("analise/graficos/grafico_14.png", mapa, width = 9, height = 8, dpi = 200, bg = "white")
 message("Salvo: analise/graficos/grafico_14.png")
