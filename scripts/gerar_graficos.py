@@ -200,10 +200,10 @@ def grafico_5():
             var_p.append((s.loc[2025, "P"] - s.loc[2023, "P"]) / s.loc[2023, "P"] * 100)
         x = range(len(redes))
         w = 0.33
-        b1 = ax.bar([i - w / 2 for i in x], var_n, width=w, color=BLUE, label="Δ% Desempenho (N)")
-        b2 = ax.bar([i + w / 2 for i in x], var_p, width=w, color=ORANGE, label="Δ% Rendimento (P)")
-        ax.bar_label(b1, fmt="%.1f%%", fontsize=9, padding=1, color=TEXT_MUTED)
-        ax.bar_label(b2, fmt="%.1f%%", fontsize=9, padding=1, color=TEXT_MUTED)
+        b1 = ax.bar([i - w / 2 for i in x], var_n, width=w, color=BLUE, label="Δ Desempenho (N)")
+        b2 = ax.bar([i + w / 2 for i in x], var_p, width=w, color=ORANGE, label="Δ Rendimento (P)")
+        ax.bar_label(b1, fmt="%.1f p.p.", fontsize=9, padding=1, color=TEXT_MUTED)
+        ax.bar_label(b2, fmt="%.1f p.p.", fontsize=9, padding=1, color=TEXT_MUTED)
         if "Municipal" in redes:
             i_mun = redes.index("Municipal")
             b1.patches[i_mun].set_hatch("///")
@@ -215,10 +215,10 @@ def grafico_5():
         ax.set_xticklabels(redes, fontsize=9)
         ax.set_title(ETAPA_ABREV[etapa], fontsize=10, loc="left")
         ax.spines[["top", "right"]].set_visible(False)
-    axes[0].set_ylabel("Variação percentual (%)")
+    axes[0].set_ylabel("Variação (p.p.)")
     handles, labels = axes[0].get_legend_handles_labels()
     fig.legend(handles, labels, loc="upper center", ncol=2, frameon=False, bbox_to_anchor=(0.5, 1.08))
-    fig.suptitle("Gráfico 5: Variação percentual de desempenho (Saeb) e rendimento por rede, MG, 2023-2025", y=1.16, fontsize=16.5)
+    fig.suptitle("Gráfico 5: Variação de desempenho (Saeb) e rendimento por rede, MG, 2023-2025", y=1.16, fontsize=16.5)
     savefig(fig, "grafico_5")
 
 
@@ -261,6 +261,7 @@ def grafico_ranking_uf(numero, ano=2025):
     fig_h = altura_barras + header_in
     fig, ax = plt.subplots(figsize=(8, fig_h))
     fig.subplots_adjust(top=altura_barras / fig_h, bottom=bottom_in / fig_h)
+    ax.yaxis.grid(False)
 
     y = list(range(len(ordem)))
     h = 0.24
@@ -357,9 +358,9 @@ def grafico_inse(numero):
 
     paineis = [
         (">= 6", "Percentual de escolas com Ideb >= 6", "CORR_INSE_x_PCT_IDEB_MAIOR_6", "P_VALOR_MAIOR_6",
-         [("Anos Iniciais do Ensino Fundamental", BLUE), ("Anos Finais do Ensino Fundamental", AQUA)]),
+         [("Anos Iniciais do Ensino Fundamental", BLUE), ("Anos Finais do Ensino Fundamental", AQUA), ("Ensino Médio", YELLOW)]),
         ("< 4", "Percentual de escolas com Ideb < 4", "CORR_INSE_x_PCT_IDEB_MENOR_4", "P_VALOR_MENOR_4",
-         [("Anos Finais do Ensino Fundamental", AQUA), ("Ensino Médio", YELLOW)]),
+         [("Anos Iniciais do Ensino Fundamental", BLUE), ("Anos Finais do Ensino Fundamental", AQUA), ("Ensino Médio", YELLOW)]),
     ]
     fig, axes = plt.subplots(1, 2, figsize=(11, 5.4))
     for ax, (faixa, ylabel, col_r, col_p, series) in zip(axes, paineis):
@@ -367,15 +368,19 @@ def grafico_inse(numero):
             d = serie(etapa, faixa)
             r = float(corr.loc[corr.ETAPA == etapa, col_r].iloc[0])
             p = float(corr.loc[corr.ETAPA == etapa, col_p].iloc[0])
-            p_txt = "p < 0,01" if p < 0.01 else f"p = {p:.2f}".replace(".", ",")
-            rotulo = f"{ETAPA_ABREV[etapa]}: r = {r:.2f} ({p_txt})".replace(".", ",")
+            if pd.isna(r) or pd.isna(p):
+                rotulo = f"{ETAPA_ABREV[etapa]}: correlação não calculável"
+            else:
+                p_txt = "p < 0,01" if p < 0.01 else f"p = {p:.2f}".replace(".", ",")
+                rotulo = f"{ETAPA_ABREV[etapa]}: r = {r:.2f} ({p_txt})".replace(".", ",")
             ax.scatter(d.MEDIA_INSE, d.PCT, s=24, color=cor, alpha=0.8, label=rotulo)
-            if len(d) >= 2:
+            if len(d) >= 2 and d.PCT.nunique() > 1:
                 b, a = np.polyfit(d.MEDIA_INSE, d.PCT, 1)
                 xs = np.linspace(d.MEDIA_INSE.min(), d.MEDIA_INSE.max(), 50)
                 ax.plot(xs, a + b * xs, color=cor, linewidth=1.5, linestyle="--")
         ax.set_xlabel("Inse médio da SRE (rede estadual)")
         ax.set_ylabel(ylabel)
+        ax.set_ylim(0, 100)
         ax.spines[["top", "right"]].set_visible(False)
         ax.legend(frameon=False, loc="upper center", bbox_to_anchor=(0.5, -0.16), fontsize=8.5)
 
@@ -399,15 +404,20 @@ def grafico_mediana_rgint(numero):
     ].iloc[0]
 
     fig, ax = plt.subplots(figsize=(8, 0.4 * len(med) + 1.8))
-    ax.barh(med.index, med.values, color=BLUE, height=0.65)
+    barras = ax.barh(med.index, med.values, color=BLUE, height=0.65)
+    for barra, valor in zip(barras, med.values):
+        if valor < mg_ideb:
+            barra.set_hatch("///")
+            barra.set_edgecolor("white")
     ax.bar_label(ax.containers[0], fmt="%.1f", fontsize=9, padding=3, color=TEXT_MUTED)
     ax.axvline(mg_ideb, color=TEXT_MUTED, linewidth=1.2, linestyle="--", zorder=0)
     ax.text(mg_ideb, len(med) - 0.4, f" MG: {mg_ideb:.1f}", color=TEXT_MUTED, fontsize=9, va="center")
     ax.set_xlabel("Ideb (mediana das escolas)")
     ax.spines[["top", "right"]].set_visible(False)
     fig.suptitle(
-        f"Gráfico {numero}: Mediana do Ideb das escolas estaduais, ensino médio, por RGInt, MG, 2025",
-        fontsize=11, y=1.03,
+        f"Gráfico {numero}: Mediana do Ideb das escolas estaduais, ensino médio, por RGInt, MG, 2025\n"
+        "(hachurado: RGInt abaixo da mediana estadual)",
+        fontsize=11, y=1.05,
     )
     savefig(fig, f"grafico_{numero}")
 

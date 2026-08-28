@@ -223,17 +223,17 @@ children.push(
 children.push(h2("Subíndices: rendimento × desempenho"));
 children.push(
   body(
-    "Como o Ideb sintetiza os resultados de rendimento e desempenho, é importante entender o comportamento dos seus subíndices. O Gráfico 5 mostra a variação percentual do desempenho (nota média padronizada obtida pelo Saeb) e do rendimento (indicador de aprovação) entre 2023 e 2025, em cada rede de ensino."
+    "Como o Ideb sintetiza os resultados de rendimento e desempenho, é importante entender o comportamento dos seus subíndices. O Gráfico 5 mostra a variação do desempenho (nota média padronizada obtida pelo Saeb) e do rendimento (indicador de aprovação) entre 2023 e 2025, em cada rede de ensino."
   )
 );
 children.push(imagem(`${G}/grafico_5.png`, 8600));
 children.push(...fonteNota([
   "Fonte: Inep/MEC.",
-  "Nota: barras hachuradas (rede Municipal) indicam aproximação pela média simples dos municípios de MG. Δ% Desempenho e Δ% Rendimento são variações percentuais relativas (não pontos percentuais), calculadas como (valor 2025 − valor 2023) / valor 2023 × 100.",
+  "Nota: barras hachuradas (rede Municipal) indicam aproximação pela média simples dos municípios de MG. Δ Desempenho e Δ Rendimento correspondem à variação percentual relativa, calculada como (valor 2025 − valor 2023) / valor 2023 × 100.",
 ]));
 children.push(
   body(
-    "Nas redes pública e estadual, os dois subíndices subiram juntos nas três etapas, o que sinaliza uma melhora genuína, em que o avanço na aprovação veio acompanhado de aprendizagem maior, e não de uma aprovação mais frouxa. O padrão mais chamativo é o da rede privada, cujo rendimento ficou estável nos anos iniciais e subiu nos anos finais e no ensino médio, entre 0,3% e 14,0%, mas cujo desempenho no Saeb caiu nas três etapas. Ou seja, a rede privada aprovou mais alunos sem que isso viesse acompanhado, em média, de mais aprendizagem, movimento inverso ao observado nas redes públicas."
+    "Nas redes pública e estadual, os dois subíndices subiram juntos nas três etapas, o que sinaliza uma melhora genuína, em que o avanço na aprovação veio acompanhado de aprendizagem maior, e não de uma aprovação mais frouxa. O padrão mais chamativo é o da rede privada, cujo rendimento ficou estável nos anos iniciais e subiu nos anos finais e no ensino médio, entre 0,3 p.p. e 14,0 p.p., mas cujo desempenho no Saeb caiu nas três etapas. Ou seja, a rede privada aprovou mais alunos sem que isso viesse acompanhado, em média, de mais aprendizagem, movimento inverso ao observado nas redes públicas."
   )
 );
 
