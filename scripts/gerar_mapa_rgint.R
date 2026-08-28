@@ -42,7 +42,10 @@ mun_sf <- mun_sf %>%
 
 abaixo <- filter(mun_sf, ABAIXO_MEDIANA_RGINT == TRUE)
 
-titulo <- "Gráfico 14: Mediana do Ideb por RGInt e municípios abaixo da mediana da própria RGInt, ensino médio, rede estadual, MG, 2025"
+titulo <- paste(strwrap(
+  "Gráfico 14: Mediana do Ideb por RGInt e municípios abaixo da mediana da própria RGInt, ensino médio, rede estadual, MG, 2025",
+  width = 70
+), collapse = "\n")
 subtitulo <- paste0(
   "Hachurado: município com Ideb (mediana das escolas) abaixo da mediana da sua RGInt  |  Ideb mediano de MG: ",
   format(mg_ideb, decimal.mark = ",")
@@ -50,25 +53,29 @@ subtitulo <- paste0(
 
 tema <- theme_void(base_size = 11) +
   theme(
-    plot.title = element_text(size = 11, hjust = 0.5),
-    plot.subtitle = element_text(size = 9, hjust = 0.5, color = "grey35"),
+    plot.title = element_text(size = 9.5, hjust = 0.5, lineheight = 1.15),
+    plot.subtitle = element_text(size = 8.5, hjust = 0.5, color = "grey35"),
     legend.position = "right"
   )
 
-# Grid dos municípios: contorno branco fino sobre todo o mapa (geom_sf base,
+# Grid dos municípios: contorno PRETO fino sobre todo o mapa (geom_sf base,
 # em ambos os ramos abaixo) — dá o efeito de grade municipal por cima do
 # preenchimento por RGInt.
+COR_GRID <- "black"
+LARG_GRID <- 0.08
+COR_HACHURA <- "#3a3a3a" # cinza escuro, delicado
 
 if (requireNamespace("ggpattern", quietly = TRUE)) {
   library(ggpattern)
   mapa <- ggplot(mun_sf) +
-    geom_sf(aes(fill = IDEB_MEDIANA_RGINT), color = "white", linewidth = 0.08) +
+    geom_sf(aes(fill = IDEB_MEDIANA_RGINT), color = COR_GRID, linewidth = LARG_GRID) +
     geom_sf_pattern(
       data = abaixo,
       aes(fill = IDEB_MEDIANA_RGINT),
-      pattern = "stripe", pattern_fill = "white", pattern_colour = "white",
-      pattern_density = 0.15, pattern_spacing = 0.01, pattern_angle = 45,
-      color = "white", linewidth = 0.08
+      pattern = "stripe", pattern_fill = COR_HACHURA, pattern_colour = COR_HACHURA,
+      pattern_density = 0.06, pattern_spacing = 0.008, pattern_linewidth = 0.15,
+      pattern_angle = 45,
+      color = COR_GRID, linewidth = LARG_GRID
     ) +
     scale_fill_gradient(low = "#cfe3f7", high = "#1a4d8f", na.value = "grey85",
                          name = "Mediana do Ideb\n(RGInt, EM estadual)") +
@@ -79,8 +86,8 @@ if (requireNamespace("ggpattern", quietly = TRUE)) {
           "fallback para marcar os municípios abaixo da mediana da RGInt. ",
           "Rode install.packages('ggpattern') e execute de novo para a hachura de fato.")
   mapa <- ggplot(mun_sf) +
-    geom_sf(aes(fill = IDEB_MEDIANA_RGINT), color = "white", linewidth = 0.08) +
-    geom_sf(data = abaixo, fill = NA, color = "#c0392b", linewidth = 0.35, linetype = "22") +
+    geom_sf(aes(fill = IDEB_MEDIANA_RGINT), color = COR_GRID, linewidth = LARG_GRID) +
+    geom_sf(data = abaixo, fill = NA, color = COR_HACHURA, linewidth = 0.35, linetype = "22") +
     scale_fill_gradient(low = "#cfe3f7", high = "#1a4d8f", na.value = "grey85",
                          name = "Mediana do Ideb\n(RGInt, EM estadual)") +
     tema +
