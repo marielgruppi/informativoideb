@@ -95,10 +95,19 @@ if (requireNamespace("ggpattern", quietly = TRUE)) {
          subtitle = sub("Hachurado", "Contorno tracejado", subtitulo))
 }
 
-# Nome de cada RGInt no centroide da sua área dissolvida.
-mapa <- mapa + geom_sf_text(
-  data = mun_sf %>% group_by(RGINT) %>% summarise(geometry = st_union(geometry), .groups = "drop") %>% st_centroid(),
-  aes(label = RGINT), size = 2.6, color = "black", fontface = "bold", check_overlap = TRUE
+# Nome de cada RGInt no centroide da sua área dissolvida — letra branca com
+# contorno preto (via shadowtext), pra ficar legível em cima de qualquer cor
+# do preenchimento. install.packages("shadowtext") se ainda não tiver.
+library(shadowtext)
+rgint_labels <- mun_sf %>%
+  group_by(RGINT) %>%
+  summarise(geometry = st_union(geometry), .groups = "drop") %>%
+  st_centroid()
+rgint_labels <- cbind(rgint_labels, st_coordinates(rgint_labels))
+
+mapa <- mapa + geom_shadowtext(
+  data = rgint_labels, aes(X, Y, label = RGINT),
+  size = 3.2, color = "white", bg.color = "black", bg.r = 0.15, fontface = "bold"
 )
 
 ggsave("analise/graficos/grafico_14.png", mapa, width = 9, height = 8, dpi = 200, bg = "white")
